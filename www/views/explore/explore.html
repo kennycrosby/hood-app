@@ -1,0 +1,27 @@
+<ion-view view-title="Explore" hide-back-button="false" hide-nav-bar="false">
+  <ion-content>
+
+    <div class="item item-image">
+      
+      <img ng-src="{{place.image_url}}">
+      <h3>How about going to...</h3>
+      <h1>{{place.name}}</h1>
+
+      <p>Rating: </p>
+      <img ng-src="{{place.rating_img_url_large}}">
+      <p>{{place.is_closed ? 'Closed' : 'Open' }}</p>
+      <p>Type of food: {{place.categories[0][0] }}</p>
+      <p>Phone {{place.display_phone}}</p>
+
+      <p><a ng-href="{{place.mobile_url}}">View on Yelp</a></p>
+
+      <p>Distance: {{place.distance | number:0}} meters</p>
+
+    </div>
+
+    <button class="button button-block button-positive" ng-click="reload()">
+      Nah, show me something else...
+    </button>
+
+  </ion-content>
+</ion-view>

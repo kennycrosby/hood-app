@@ -1,0 +1,74 @@
+<ion-view view-title="Register">
+  <ion-content class="padding-top">
+    <div class="text-center padding-top">
+      <i class="icon ion-android-person-add larger positive"></i>
+    </div>
+    <form name="registerForm" novalidate ng-submit="registerForm.$valid && register(user)"
+    ng-class="{ 'has-error' : registerForm.txtemail.$invalid && registerForm.$submitted }">
+    <div class="list">
+      <label class="item item-input item-floating-label">
+          <span class="input-label">DDB Email</span>
+        <input name="txtemail" type="email" ng-model="user.email" placeholder="Email"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+      <div class="form-errors" ng-messages="registerForm.txtemail.$error" ng-if="registerForm.$submitted">
+        <div class="form-error" ng-message="required">You must enter something like nombre@email.com.</div>
+        <div class="form-error" ng-message="email">This field is must be an email.</div>
+        <div class="form-error" ng-message="maxlength">Oops, this address is too long.</div>
+      </div>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">First Name</span>
+        <input name="txtemail" type="text" ng-model="user.firstname" placeholder="First Name"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Last Name</span>
+        <input name="txtemail" type="text" ng-model="user.lastname" placeholder="Last Name"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Job Title</span>
+        <input name="txtemail" type="text" ng-model="user.title" placeholder="Job Title"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Phone Number</span>
+        <input name="txtemail" type="tel" ng-model="user.phone" placeholder="Phone Number"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
+
+      <label class="item item-input item-floating-label" ng-class="{ 'has-error-lr' : registerForm.txtpassword.$invalid  && registerForm.$submitted}">
+        <span class="input-label">Password</span>
+        <input name="txtpassword" type="password" ng-model="user.password" placeholder="Password"
+        ng-minlength="4"
+        ng-maxlength="25"
+        required>
+      </label>
+      <div class="form-errors" ng-messages="registerForm.txtpassword.$error" ng-if="registerForm.$submitted">
+        <div class="form-error" ng-message="required">You must enter a password.</div>
+        <div class="form-error" ng-message="minlength">Password is too short.</div>
+        <div class="form-error" ng-message="maxlength">Password is too long</div>
+        <div class="form-error" ng-message="pattern">You must only enter characters, letters and numbers.</div>
+      </div>
+    </div>
+    <div class="padding-top">
+      <input type="submit" value="Register" class="button button-block button-positive"/>
+    </div>
+  </form>
+  </ion-content>
+</ion-view>

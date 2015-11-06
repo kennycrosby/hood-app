@@ -1,0 +1,17 @@
+<ion-view view-title="Home" hide-back-button="true" hide-nav-bar="false">
+  <ion-content class="padding-top">
+    <h1>DDB</h1>
+    <button ng-click="logOut()" class="button button-clear button-positive">Logout</button>
+    <ion-list>
+      <ion-item ng-click="nav('explore')">
+        Explore
+      </ion-item>
+      <ion-item ng-click="nav('news')">
+        News
+      </ion-item>
+      <ion-item ng-click="nav('people')">
+        People
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
