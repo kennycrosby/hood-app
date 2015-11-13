@@ -9035,3 +9035,42 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.bar.bar-dark {
+  border-color: #343434;
+  background-image: linear-gradient(0deg, #343434, #343434 50%, transparent 50%); }
+
+.news {
+  background: #fff; }
+  .news a {
+    text-decoration: none;
+    color: #11c1f3; }
+  .news .item-divider {
+    background: #343434;
+    color: #fff;
+    border: none;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 300; }
+  .news .content {
+    margin: 35px 25px;
+    color: #343434; }
+    .news .content p {
+      font-size: 1.1em;
+      line-height: 1.8em; }
+    .news .content footer {
+      padding: 10px 0; }
+  .news .image {
+    width: 100%;
+    height: auto; }
+    .news .image img {
+      max-width: 100%;
+      height: auto; }
+
+.explore {
+  text-align: center; }
+  .explore .item-image {
+    height: 250px; }
+    .explore .item-image img {
+      width: 100%;
+      height: auto; }

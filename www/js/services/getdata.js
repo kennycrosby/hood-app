@@ -69,6 +69,9 @@ angular.module('App').factory('GetData', function(FURL, $firebaseArray, $firebas
       parameters = [];
       parameters.push(['term', terms]);
       parameters.push(['location', near]);
+      parameters.push(['limit', '20']);   
+      parameters.push(['radius_filter', '5000']);    
+      parameters.push(['sort', '1']);  
       parameters.push(['callback', 'cb']);
       parameters.push(['oauth_consumer_key', auth.consumerKey]);
       parameters.push(['oauth_consumer_secret', auth.consumerSecret]);
@@ -85,7 +88,7 @@ angular.module('App').factory('GetData', function(FURL, $firebaseArray, $firebas
       OAuth.SignatureMethod.sign(message, accessor);
 
       var parameterMap = OAuth.getParameterMap(message.parameters);
-      parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature)
+      parameterMap.oauth_signature = OAuth.percentEncode(parameterMap.oauth_signature);
       console.log(parameterMap);
 
       $.ajax({
