@@ -1,17 +1,21 @@
-<ion-view view-title="Firebase Starter Pack" hide-back-button="true" hide-nav-bar="true">
-        <ion-content class="padding-top">
-          <div class="list text-center padding">
-            <!-- <i class="icon ion-ios-game-controller-b larger positive"></i> -->
+<ion-view view-title="Login" hide-back-button="true" hide-nav-bar="true">
+        <ion-content class="login-page" scroll="false">
+          <!-- <div class="list text-center padding">
+            <i class="icon ion-ios-game-controller-b larger positive"></i>
             <h1>HOOD</h1>
             <h2>DDB California</h2>
+          </div> -->
+          <div class="logo">
+            <img src="img/logo-login.svg" />
           </div>
           <form novalidate name="loginForm" ng-submit="loginForm.$valid && signIn(user)">
           <div class="list">
             <label class="item item-input item-floating-label" ng-class="{ 'has-error' : loginForm.txtemail.$invalid && loginForm.$submitted }">
-              <span class="input-label">Email</span>
-              <input name="txtemail" type="email" ng-model="user.email" placeholder="Email"
+              <span class="input-label">DDB Email</span>
+              <i class="icon ion-ios-person-outline placeholder-icon"></i>
+              <input name="txtemail" type="email" ng-model="user.email" placeholder="DDB Email"
               ng-minlength="5"
-              ng-maxlength="30"
+              ng-maxlength="100"
               required>
             </label>
             <!-- Edit this messages if you want -->
@@ -19,26 +23,31 @@
               <div class="form-error" ng-message="required">This field is required.</div>
               <div class="form-error" ng-message="email">This field is must be an email.</div>
               <div class="form-error" ng-message="minlength">This field is must be at least 5 characters.</div>
-              <div class="form-error" ng-message="maxlength">This field is must be less than 30 characters.</div>
+              <div class="form-error" ng-message="maxlength">This field is must be less than 100 characters.</div>
             </div>
             <label class="item item-input item-floating-label" ng-class="{ 'has-error-lr' : loginForm.txtPassword.$invalid && loginForm.$submitted }">
               <span class="input-label">Password</span>
+              <i class="icon ion-ios-locked-outline placeholder-icon"></i>
               <input name="txtPassword" type="password" ng-model="user.password" placeholder="Password"
               ng-minlength="4"
-              ng-maxlength="30"
+              ng-maxlength="80"
               required>
             </label>
             <!-- Edit this messages if you want -->
             <div class="form-errors" ng-messages="loginForm.txtPassword.$error" ng-if="loginForm.$submitted">
-            <div class="form-error" ng-message="required">This field is required.</div>
-            <div class="form-error" ng-message="minlength">This field is must be at least 4 characters.</div>
-            <div class="form-error" ng-message="maxlength">This field is must be less than 30 characters.</div>
+              <div class="form-error" ng-message="required">This field is required.</div>
+              <div class="form-error" ng-message="minlength">This field is must be at least 4 characters.</div>
+              <div class="form-error" ng-message="maxlength">This field is must be less than 80 characters.</div>
             </div>
           </div>
+
           <div class="padding-top">
-            <input type="submit" class="button button-block button-light" value="Sign In">
-            <p class="text-center padding-top">
-                <a href="#/forgot" class="button button-clear button-dark">Forgot password</a><a href="#/register" class="button button-clear button-dark">Register</a>
+            <input type="submit" class="button button-block button-positive" value="Sign In">
+            
+            <p class="text-center padding-top sub-login">Forgot your password? <a href="#/forgot">Reset</a></p>
+            <!-- <p class="text-center padding-top sub-login">Don’t have an account? <a href="#/register">Sign Up</a></p> -->
+            <!-- <p class="text-center padding-top">
+                <a href="#/forgot" class="button button-clear button-dark">Forgot password</a><a href="#/register" class="button button-clear button-dark">Register</a></p> -->
           </div>
         </form>
         </ion-content>

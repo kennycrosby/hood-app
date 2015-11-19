@@ -1,0 +1,101 @@
+.home-page {
+  .logout {
+    position: absolute;
+    top: 0;
+    right: 10px;
+  }
+  .profile {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    i:before {
+      font-size: 2.0em;
+      font-weight: 500;
+    }
+  }
+  .scroll {
+    height: 100%;
+  }
+  header {
+    height: 85px;
+    img {
+      margin: 0 auto;
+      display: block;
+    }  
+  }
+  .navigation {
+    height: calc(100% - 82px);
+
+    a {
+      position: relative;
+      z-index: 0;
+      background: #444;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      &.explore {
+        &:before { 
+          background-image: url(../img/nav-explore.png);
+        }
+      }
+      &.news {
+        &:before {
+          background-image: url(../img/nav-news.png);
+        }
+      }
+      &.people {
+        &:before {
+          background-image: url(../img/nav-people.png);
+        }
+      }
+      &:before {
+        content: ' ';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.38;
+        background-repeat: no-repeat;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
+      }
+      height: 33.33333%;
+      text-align: center;
+      text-decoration: none;
+      color: $light;
+      display: table;
+      width: 100%;
+      .overlay {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.3);
+      }
+      div {
+        z-index: -1;
+        display: table-cell;
+        margin: 0;
+        color: white;
+        vertical-align: middle;
+        // background-image: linear-gradient(-180deg, rgba(3,3,3,0.2) 3%, rgba(0,0,0,0.2) 100%);
+        h2 {
+          font-size: 2.8em;
+          font-weight: 500;
+          color: $light;
+          font-family: 'proxima_novabold';
+        }
+        h3 {
+          font-size: 1.1em;
+          font-weight: 500;
+          color: $light;
+          opacity: .75;
+        }
+      }
+    }
+  }
+}

@@ -1,20 +1,23 @@
 <ion-view view-title="Register">
-  <ion-content class="padding-top">
-    <div class="text-center padding-top">
-      <i class="icon ion-android-person-add larger positive"></i>
+  <ion-content class="register-page padding-top">
+    <div class="logo">
+      <img src="img/logo-login.svg" />
     </div>
+
+<!--     <a href="" class="button button-block">Facebook Connect</a>
+ -->
     <form name="registerForm" novalidate ng-submit="registerForm.$valid && register(user)"
     ng-class="{ 'has-error' : registerForm.txtemail.$invalid && registerForm.$submitted }">
     <div class="list">
       <label class="item item-input item-floating-label">
           <span class="input-label">DDB Email</span>
-        <input name="txtemail" type="email" ng-model="user.email" placeholder="Email"
+        <input name="txtemail" type="email" ng-model="user.email" placeholder="DDB Email"
         ng-minlength="5"
         ng-maxlength="60"
         required>
       </label>
       <div class="form-errors" ng-messages="registerForm.txtemail.$error" ng-if="registerForm.$submitted">
-        <div class="form-error" ng-message="required">You must enter something like nombre@email.com.</div>
+        <div class="form-error" ng-message="required">You must enter something like name@email.com.</div>
         <div class="form-error" ng-message="email">This field is must be an email.</div>
         <div class="form-error" ng-message="maxlength">Oops, this address is too long.</div>
       </div>
@@ -51,7 +54,6 @@
         required>
       </label>
 
-
       <label class="item item-input item-floating-label" ng-class="{ 'has-error-lr' : registerForm.txtpassword.$invalid  && registerForm.$submitted}">
         <span class="input-label">Password</span>
         <input name="txtpassword" type="password" ng-model="user.password" placeholder="Password"
@@ -59,16 +61,80 @@
         ng-maxlength="25"
         required>
       </label>
+
       <div class="form-errors" ng-messages="registerForm.txtpassword.$error" ng-if="registerForm.$submitted">
         <div class="form-error" ng-message="required">You must enter a password.</div>
         <div class="form-error" ng-message="minlength">Password is too short.</div>
         <div class="form-error" ng-message="maxlength">Password is too long</div>
         <div class="form-error" ng-message="pattern">You must only enter characters, letters and numbers.</div>
       </div>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Twitter (optional)</span>
+        <input name="txtemail" type="text" ng-model="user.twitter" placeholder="Twitter (optional)"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Facebook (optional)</span>
+        <input name="txtemail" type="text" ng-model="user.facebook" placeholder="Facebook (optional)"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Instagram (optional)</span>
+        <input name="txtemail" type="text" ng-model="user.facebook" placeholder="Instagram (optional)"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
     </div>
     <div class="padding-top">
-      <input type="submit" value="Register" class="button button-block button-positive"/>
+      <input type="submit" value="Register Person" class="button button-block button-positive"/>
     </div>
   </form>
+
+<!--   <div class="padding-top">
+    <a href="" ng-click="registerAll()" class="button button-block button-positive">Register all people</a>
+  </div> -->
+
+
+  <form name="googleplaceForm" id="googleplaceForm" novalidate ng-submit="addGooglePlace(place)">
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Place Name</span>
+      <input name="txtemail" type="text" ng-model="place.name" placeholder="Name"
+      ng-minlength="5"
+      ng-maxlength="60"
+      required>
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Place ID from Google</span>
+      <input name="txtemail" type="text" ng-model="place.id" placeholder="Place ID"
+      ng-minlength="5"
+      ng-maxlength="60"
+      required>
+    </label>
+    <label>
+      <input type="radio" ng-model="place.type" value="food">
+      Food
+    </label><br/>
+    <label>
+      <input type="radio" ng-model="place.type" value="drinks">
+      Drinks
+    </label><br/>
+    <label>
+      <input type="radio" ng-model="place.type" value="fun">
+      Fun
+    </label><br/>
+    <div class="padding-top">
+      <input type="submit" value="Add Google Place" class="button button-block button-positive"/>
+    </div>
+  </form>
+
   </ion-content>
 </ion-view>

@@ -19,6 +19,7 @@ $stateProvider
     })
     .state('home', {
       url: '/home',
+      cache: false,
       templateUrl: 'views/home/home.html',
       controller:'homeController'
     })
@@ -48,17 +49,40 @@ $urlRouterProvider.otherwise("/login");
 // Changue this for your Firebase App URL.
 .constant('FURL', 'https://hoodapp.firebaseio.com/')
 .run(function($ionicPlatform) {
+
   $ionicPlatform.ready(function() {
+
+    if (window.StatusBar) {
+      StatusBar.show();
+      StatusBar.styleDefault();  
+    }
+    
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
-
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
     }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
+
   });
+})
+
+.filter('capitalize', function() {
+  return function(input, all) {
+    var reg = (all) ? /([^\W_]+[^\s-]*) */g : /([^\W_]+[^\s-]*)/;
+    return (!!input) ? input.replace(reg, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';
+  }
+})
+
+.filter('cut', function () {
+    return function (value, numWords) {
+        if (!value) return '';
+        numWords = parseInt(numWords);
+        if (value.split(/\s+/).length > numWords) {
+          return value.split(/\s+/).slice(0,numWords).join(' ');
+        } else {
+          return value;
+        }
+    };
 })
 
 .filter('tweetLinky',['$filter',
@@ -77,6 +101,27 @@ $urlRouterProvider.otherwise("/login");
             // replace @mentions but keep them to our site
             var replacePattern2 = /(^|\s)\@(\w*[a-zA-Z_]+\w*)/gim;
             replacedText = replacedText.replace(replacePattern2, '$1<a href="https://twitter.com/$2"' + targetAttr + '>@$2</a>');
+            return replacedText;
+        };
+    }
+])
+
+.filter('instagramLinky',['$filter',
+    function($filter) {
+        return function(text, target) {
+            if (!text) return text;
+
+            var replacedText = $filter('linky')(text, target);
+            var targetAttr = "";
+            if (angular.isDefined(target)) {
+                targetAttr = ' target="' + target + '"';
+            }
+            // replace #hashtags and send them to twitter
+            var replacePattern1 = /(^|\s)#(\w*[a-zA-Z_]+\w*)/gim;
+            replacedText = text.replace(replacePattern1, '$1<a href="https://www.instagram.com/explore/tags/$2"' + targetAttr + '>#$2</a>');
+            // replace @mentions but keep them to our site
+            var replacePattern2 = /(^|\s)\@(\w*[a-zA-Z_]+\w*)/gim;
+            replacedText = replacedText.replace(replacePattern2, '$1<a href="https://www.instagram.com/$2"' + targetAttr + '>@$2</a>');
             return replacedText;
         };
     }

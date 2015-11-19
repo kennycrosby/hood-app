@@ -1,0 +1,111 @@
+.explore-page {
+  .item-image {
+    min-height: 215px;
+    border-bottom: none;
+    background: $dark;
+    #map {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      &.hide {
+        position: absolute;
+        left: -999em;
+      }
+    }
+    img {
+      width:100%;
+      height: auto;
+    }
+  }
+}
+
+.tabs-top {
+  .tabs {
+    .tab-item {
+      font-size: 0.9em;
+      font-family: 'proxima_novabold';
+    }
+  }
+}
+
+.place-content {
+  background: $light;
+  .row {
+    .col {
+      text-align: right;
+    }
+    .col:first-child {
+      text-align: left;
+    }
+  }
+  h3, h2 {
+    color: $dark;
+    font-family: 'proxima_novabold';
+  }
+  h3 {
+    font-size: 0.8em;
+    margin-bottom: 0px;
+    margin-top: 5px;
+    opacity: .6;
+  }
+  h2 {
+    font-size: 1.3em;
+    font-weight: 500;
+    opacity: .75;
+    margin-bottom: 0px;
+  }
+  p.open {
+    color: #848484;
+    opacity: .6;
+  }
+  .rating {
+    .stars {
+      overflow: hidden;
+      span {
+        width: 11px;
+        height: 11px;
+        margin-right: 6px;
+        display: block;
+        float: left;
+        border: 3px solid #ccc;
+        border-radius: 50%;
+        &.starred {
+          border-color: $energized;
+        }
+      }
+    }
+    small {
+      clear: both;
+      opacity: .45;
+    }
+  }
+  .pricing {
+    opacity: .55;
+    span {
+      margin-right: 4px;
+    }
+  }
+  .address {
+    text-decoration: none;
+    color: #848484;
+    opacity: .6;
+    b {
+      font-family: 'proxima_novabold';
+      color: $dark;
+    }
+  }
+}
+
+
+.bottom-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  .tabs {
+    position: relative;
+  }
+  button.button.button-block {
+    margin: 0;
+    color: $dark;
+  }
+}

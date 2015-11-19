@@ -1,8 +1,16 @@
 <ion-view view-title="People" hide-back-button="false" hide-nav-bar="false">
-  <ion-content class="padding-top">
-    
+  <ion-header-bar class="bar-dark bar-subheader">
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Search Force" data-ng-model="searchForce">
+    </label>
+  </ion-header-bar>
+  <ion-content>
+<!--     <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Search Force" data-ng-model="searchForce">
+    </label>  -->   
     <ion-list>
-      <!-- ng-ref="/people/{{person.id}}" -->
       <ion-item ng-repeat="person in people" ng-href="/#/profile/{{person.id}}">
         {{person.firstname}} {{person.lastname}}
       </ion-item>

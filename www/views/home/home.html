@@ -1,17 +1,37 @@
-<ion-view view-title="Home" hide-back-button="true" hide-nav-bar="false">
-  <ion-content class="padding-top">
-    <h1>DDB</h1>
-    <button ng-click="logOut()" class="button button-clear button-positive">Logout</button>
-    <ion-list>
-      <ion-item ng-click="nav('explore')">
-        Explore
-      </ion-item>
-      <ion-item ng-click="nav('news')">
-        News
-      </ion-item>
-      <ion-item ng-click="nav('people')">
-        People
-      </ion-item>
-    </ion-list>
+<ion-view view-title="" hide-back-button="true" hide-nav-bar="false">
+  <ion-nav-bar class="bar-light">
+    <ion-nav-back-button></ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="home-page" scroll="false">
+    <button ng-click="logOut()" class="button button-clear button-positive logout"><i class="icon ion-log-out"></i></button>
+    <button ng-click="profile()" class="button button-clear button-positive profile"><i class="icon ion-ios-person-outline"></i></button>
+    <header>
+      <img src="img/logo-home.svg">
+    </header>
+
+    <div class="navigation">
+      <a href="#/explore" class="explore">
+        <div class="overlay"></div>
+        <div>
+          <h2>Explore</h2>
+          <h3>the neighborhood</h3>
+        </div>
+      </a>
+      <a href="#/news" class="news">
+        <div class="overlay"></div>
+        <div>
+          <h2>News</h2>
+          <h3>from DDB San Francisco</h3>
+        </div>
+      </a>
+      <a href="#/people" class="people">
+        <div class="overlay"></div>
+        <div>
+          <h2>People</h2>
+          <h3>DDB directory</h3>
+        </div>
+      </a>
+    </div>
+
   </ion-content>
 </ion-view>

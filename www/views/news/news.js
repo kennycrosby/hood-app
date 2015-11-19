@@ -1,14 +1,28 @@
 'Use Strict';
-angular.module('App').controller('newsController', function (News, $scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+angular.module('App').controller('newsController', function (News, $firebaseArray, $scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
+
+  if (window.StatusBar) {
+    StatusBar.styleBlackTranslucent();
+  }
+
+  // create a connection to Firebase
   var ref = new Firebase(FURL);
+  var newsRef = ref.child('news');
 
+  // create a scrollable reference
+  var scrollRef = new Firebase.util.Scroll(newsRef, '$priority');
 
-  var dfdNews = News.all();
+  // create a synchronized array on scope
+  $scope.news = $firebaseArray(scrollRef);
+  // load the first three news
+  scrollRef.scroll.next(3);
 
-  dfdNews.then(function(data) {
-    console.log('news data', data);
-    $scope.news = data;
-  });
+  // This function is called whenever the user reaches the bottom
+  $scope.loadMore = function() {
+    // load the next contact
+    scrollRef.scroll.next(2);
+    $scope.$broadcast('scroll.infiniteScrollComplete');
+  };
 
 }
 );

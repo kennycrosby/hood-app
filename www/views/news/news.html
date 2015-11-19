@@ -1,121 +1,49 @@
-<ion-view view-title="News" hide-back-button="false" hide-nav-bar="false">
-  <ion-content class="news" scroll-event-interval="5">
+<ion-view view-title="Latest News" hide-back-button="false" hide-nav-bar="false">
+  <ion-content class="news-page" scroll-event-interval="5">
 
-      <div ng-repeat="day in news | orderBy:'$id':true">
-        <div class="group-list">
-          <div class="list">
-            <div class="item item-divider" ion-affix data-affix-within-parent-with-class="group-list">
-                {{day.$id | date: 'fullDate'}}
-            </div>
-            <div ng-repeat="item in day">
+      <div class="scrollbox" scroll-to-bottom="scrollItems">
 
-                <div ng-show="item.created_at" class="twitter">
-                  <div class="image" ng-show="{{item.extended_entities.media[0]}}">
-                    <img ng-src="{{item.extended_entities.media[0].media_url}}">
-                  </div>
-                  <div class="content">
-                    <p ng-bind-html="item.text | linky | tweetLinky"></p>
-                    <footer>
-                      <i class="icon ion-social-twitter"></i> <a href="https://twitter.com/{{item.user.screen_name}}" rel="author">@{{item.user.screen_name}}</a>
-                    </footer>  
-                  </div>
-                </div>
-
-                <div ng-show="item.caption" class="instagram">
-                  <div class="image">
-                    <img ng-src="{{item.images.standard_resolution.url}}">
-                  </div>
-                  <div class="content">
-                    <p>{{item.caption.text}}</p>
-                  </div>
-                </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    
-    
-<!--
-    <article class="post" ng-repeat="day in news">
-      <h1 ion-affix data-affix-within-parent-with-class="post">{{day.$id | date: 'fullDate'}}</h1>
-      <main>
-        <div class="card" ng-repeat="item in day">
-            <div class="item item-text-wrap">
-                <div ng-show="item.created_at" class="twitter">
-                  <div class="item item-image">
-                    <img ng-src="{{item.extended_entities.media[0].media_url}}" ng-show="{{item.extended_entities.media[0]}}">
-                  </div>
-                  <p ng-bind-html="item.text | linky | tweetLinky"></p>  
-                </div>
-                <div ng-show="item.caption" class="instagram">
-                  <div class="item item-image">
-                    <img ng-src="{{item.images.standard_resolution.url}}">
-                  </div>
-                  <p>{{item.caption.text}}</p>
-                </div>
-            </div>
-        </div>
-      </main>
-    </article> -->
-
-
-
-    <!-- <div ng-repeat="day in news">
-      <div class="group-list">
-        <div class="list">
-          <div class="item-divider">
-            {{day.$id | date: 'fullDate'}}
-          </div>
-          <div class="card" ng-repeat="item in day">
-              <div class="item item-text-wrap">
-                  <div ng-show="item.created_at" class="twitter">
-                    <div class="item item-image">
-                      <img ng-src="{{item.extended_entities.media[0].media_url}}" ng-show="{{item.extended_entities.media[0]}}">
+        <div ng-repeat="day in news"> 
+          <div class="group-list">
+            <div class="list">
+              <div class="item item-divider" ion-affix data-affix-within-parent-with-class="group-list">
+                  <span class="day">{{day.$id | date: 'EEEE'}}<br></span>
+                  <span class="date">{{day.$id | date: 'MMMM d, y'}}</span>
+              </div>
+              <div ng-repeat="item in day" class="social-item">
+                  <div ng-show="item.created_at != null" class="twitter">
+                    <div class="image" ng-show="item.extended_entities.media[0] != null">
+                      <img ng-src="{{item.extended_entities.media[0].media_url}}">
                     </div>
-                    <p ng-bind-html="item.text | linky | tweetLinky"></p>  
+                    <div class="content">
+                      <p ng-bind-html="item.text | linky | tweetLinky"></p>
+                      <footer>
+                        <i class="icon ion-social-twitter"></i> <a href="https://twitter.com/{{item.user.screen_name}}" rel="author">@{{item.user.screen_name}}</a>
+                      </footer>  
+                    </div>
                   </div>
-                  <div ng-show="item.caption" class="instagram">
-                    <div class="item item-image">
+
+                  <div ng-show="item.caption != null" class="instagram">
+                    <div class="image">
                       <img ng-src="{{item.images.standard_resolution.url}}">
                     </div>
-                    <p>{{item.caption.text}}</p>
+                    <div class="content">
+                      <p ng-bind-html="item.caption.text | instagramLinky"></p>
+                      <footer>
+                        <i class="icon ion-social-instagram-outline"></i> <a href="https://www.instagram.com/{{item.user.username}}" rel="author">@{{item.user.username}}</a>
+                      </footer>  
+
+                    </div>
                   </div>
+
               </div>
+            </div>
           </div>
         </div>
+
       </div>
-    </div> -->
-    
-    <!-- <ion-list>
-      <ion-item ng-repeat="day in news" class="item-text-wrap">
-        
-        <div class="item item-divider" ion-affix data-affix-within-parent-with-class="group-list">
-            {{day.$id | date: 'fullDate'}}
-        </div>
 
-          <div ng-repeat="item in day">
-
-            <div ng-show="item.created_at" class="twitter">
-              <div class="item item-image">
-                <img ng-src="{{item.extended_entities.media[0].media_url}}" ng-show="{{item.extended_entities.media[0]}}">
-              </div>
-              <p ng-bind-html="item.text | linky | tweetLinky"></p>  
-            </div>
-            
-            <div ng-show="item.caption" class="instagram">
-              <div class="item item-image">
-                <img ng-src="{{item.images.standard_resolution.url}}">
-              </div>
-              <p>{{item.caption.text}}</p>
-            </div>
-
-          </div>
-
-      </ion-item>
-    </ion-list> -->
+      <ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
     
   </ion-content>
 </ion-view>

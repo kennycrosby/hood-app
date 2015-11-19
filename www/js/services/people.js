@@ -4,7 +4,7 @@ angular.module('App').factory('People', function(FURL, $firebaseArray, $firebase
   var ref = new Firebase(FURL);
 
   var dfdPeople = $.Deferred();
-  $firebaseArray(ref.child('profile')).$loaded().then(function(people){
+  $firebaseArray(ref.child('profile').orderByChild('lastname') ).$loaded().then(function(people){
     dfdPeople.resolve(people);
   });
 
