@@ -1,0 +1,63 @@
+.profile-page {
+  .top {
+    background: $dark;
+    min-height: 250px;
+    width: 100%;
+    overflow: hidden;
+    h1,
+    h2 {
+      color: $light;
+      text-align: center;
+      font-family: 'proxima_novaregular'
+    }
+    h1 {
+      font-size: 2em;
+    }
+    h2 {
+      font-size: 1.3em;
+      opacity: .6;
+    }
+    img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      margin: 20px auto 10px;
+      display: block;
+    }
+    padding-bottom: 25px;
+  }
+  .list {
+    margin: 25px 10%;
+    border: none;
+    .item {
+      h5 {
+        opacity: .4;
+      }
+      border-left: none;
+      border-right: none;
+      &:first-child {
+        border-top: none;
+      }
+    }
+  }
+}
+
+.people-search {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 0 20px;
+  border: 0;
+  .placeholder-icon {
+    padding-top: 6px;
+  }
+}
+
+button.button.button-icon.input-button {
+  position: absolute;
+  top: 1px;
+  right: 0px;
+  &:before {
+    font-size: 22px;
+  }
+}

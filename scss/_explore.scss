@@ -7,9 +7,9 @@
       width: 100%;
       height: 100%;
       position: relative;
+      opacity: 1;
       &.hide {
-        position: absolute;
-        left: -999em;
+        opacity: 0;
       }
     }
     img {

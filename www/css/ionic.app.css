@@ -9064,10 +9064,10 @@ a.button {
   .explore-page .item-image #map {
     width: 100%;
     height: 100%;
-    position: relative; }
+    position: relative;
+    opacity: 1; }
     .explore-page .item-image #map.hide {
-      position: absolute;
-      left: -999em; }
+      opacity: 0; }
   .explore-page .item-image img {
     width: 100%;
     height: auto; }
@@ -9134,6 +9134,56 @@ a.button {
   .bottom-content button.button.button-block {
     margin: 0;
     color: #2F2D28; }
+
+.profile-page .top {
+  background: #2F2D28;
+  min-height: 250px;
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 25px; }
+  .profile-page .top h1,
+  .profile-page .top h2 {
+    color: #fff;
+    text-align: center;
+    font-family: 'proxima_novaregular'; }
+  .profile-page .top h1 {
+    font-size: 2em; }
+  .profile-page .top h2 {
+    font-size: 1.3em;
+    opacity: .6; }
+  .profile-page .top img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    margin: 20px auto 10px;
+    display: block; }
+
+.profile-page .list {
+  margin: 25px 10%;
+  border: none; }
+  .profile-page .list .item {
+    border-left: none;
+    border-right: none; }
+    .profile-page .list .item h5 {
+      opacity: .4; }
+    .profile-page .list .item:first-child {
+      border-top: none; }
+
+.people-search {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 0 20px;
+  border: 0; }
+  .people-search .placeholder-icon {
+    padding-top: 6px; }
+
+button.button.button-icon.input-button {
+  position: absolute;
+  top: 1px;
+  right: 0px; }
+  button.button.button-icon.input-button:before {
+    font-size: 22px; }
 
 .home-page .logout {
   position: absolute;
@@ -9287,21 +9337,20 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .button.button-positive {
   color: #2F2D28; }
 
-::-webkit-input-placeholder {
-  color: #fff !important; }
-
-:-moz-placeholder {
-  /* Firefox 18- */
-  color: #fff !important; }
-
-::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #fff !important; }
-
 .title.title-center {
   font-family: 'proxima_novaregular';
   font-weight: 500;
   font-size: 1.5em; }
+
+ion-view.pane:before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  background-color: #fff; }
 
 .forgot-page,
 .register-page,
@@ -9311,6 +9360,20 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   -moz-background-size: cover;
   background-size: cover;
   z-index: 0; }
+  .forgot-page ::-webkit-input-placeholder,
+  .register-page ::-webkit-input-placeholder,
+  .login-page ::-webkit-input-placeholder {
+    color: #fff !important; }
+  .forgot-page :-moz-placeholder,
+  .register-page :-moz-placeholder,
+  .login-page :-moz-placeholder {
+    /* Firefox 18- */
+    color: #fff !important; }
+  .forgot-page ::-moz-placeholder,
+  .register-page ::-moz-placeholder,
+  .login-page ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #fff !important; }
   .forgot-page .button.button-positive,
   .register-page .button.button-positive,
   .login-page .button.button-positive {

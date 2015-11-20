@@ -1,18 +1,36 @@
 <ion-view view-title="People" hide-back-button="false" hide-nav-bar="false">
-  <ion-header-bar class="bar-dark bar-subheader">
-    <label class="item item-input">
+
+  <ion-header-bar class="bar-light bar-subheader">
+
+    <div class="item item-input people-search">
       <i class="icon ion-search placeholder-icon"></i>
-      <input type="text" placeholder="Search Force" data-ng-model="searchForce">
-    </label>
+      <input type="search"
+             placeholder="Search name or title..."
+             ng-model="search"
+             ng-focus="searchFocused = true"
+             ng-blur="searchFocused = false"
+             ng-change="scrollTop()"
+             class="full-width">
+      <button ng-if="search.length"
+              class="button button-icon ion-ios-close input-button"
+              ng-click="clearSearch()">
+      </button>
+    </div>
   </ion-header-bar>
+
   <ion-content>
-<!--     <label class="item item-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input type="text" placeholder="Search Force" data-ng-model="searchForce">
-    </label>  -->   
-    <ion-list>
-      <ion-item ng-repeat="person in people" ng-href="/#/profile/{{person.id}}">
-        {{person.firstname}} {{person.lastname}}
+    <ion-list can-swipe="true">
+      <ion-item ng-repeat="person in people | filter:search" class="item-avatar" ng-href="#/profile/{{person.id}}">
+        <!-- <img ng-src="http://ddbcalifornia.com/ddbpeople/{{person.firstname | lowercase}}.{{person.lastname | lowercase}}.jpg"> -->
+        <img src="http://www.fillmurray.com/g/600/600">
+        <h2>{{person.firstname}} {{person.lastname}}</h2>
+        <p>{{person.title}}</p>
+        <ion-option-button class="button-positive" ng-href="tel://{{person.phone | tel}}">
+          Call
+        </ion-option-button>
+        <ion-option-button class="button-info" ng-href="sms://{{person.phone | tel}}">
+          Text
+        </ion-option-button>
       </ion-item>
     </ion-list>
 

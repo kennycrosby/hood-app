@@ -19,7 +19,6 @@ $stateProvider
     })
     .state('home', {
       url: '/home',
-      cache: false,
       templateUrl: 'views/home/home.html',
       controller:'homeController'
     })
@@ -84,26 +83,70 @@ $urlRouterProvider.otherwise("/login");
         }
     };
 })
+.filter('tel', function () {
+    return function (tel) {
+        if (!tel) { return ''; }
+
+        var value = tel.toString().trim().replace(/^\+/, '');
+
+        if (value.match(/[^0-9]/)) {
+            return tel;
+        }
+
+        var country, city, number;
+
+        switch (value.length) {
+            case 10: // +1PPP####### -> C (PPP) ###-####
+                country = 1;
+                city = value.slice(0, 3);
+                number = value.slice(3);
+                break;
+
+            case 11: // +CPPP####### -> CCC (PP) ###-####
+                country = value[0];
+                city = value.slice(1, 4);
+                number = value.slice(4);
+                break;
+
+            case 12: // +CCCPP####### -> CCC (PP) ###-####
+                country = value.slice(0, 3);
+                city = value.slice(3, 5);
+                number = value.slice(5);
+                break;
+
+            default:
+                return tel;
+        }
+
+        if (country == 1) {
+            country = "";
+        }
+
+        number = number.slice(0, 3) + '-' + number.slice(3);
+
+        return (country + " (" + city + ") " + number).trim();
+    };
+})
 
 .filter('tweetLinky',['$filter',
-    function($filter) {
-        return function(text, target) {
-            if (!text) return text;
+  function($filter) {
+    return function(text, target) {
+      if (!text) return text;
 
-            var replacedText = $filter('linky')(text, target);
-            var targetAttr = "";
-            if (angular.isDefined(target)) {
-                targetAttr = ' target="' + target + '"';
-            }
-            // replace #hashtags and send them to twitter
-            var replacePattern1 = /(^|\s)#(\w*[a-zA-Z_]+\w*)/gim;
-            replacedText = text.replace(replacePattern1, '$1<a href="https://twitter.com/search?q=%23$2"' + targetAttr + '>#$2</a>');
-            // replace @mentions but keep them to our site
-            var replacePattern2 = /(^|\s)\@(\w*[a-zA-Z_]+\w*)/gim;
-            replacedText = replacedText.replace(replacePattern2, '$1<a href="https://twitter.com/$2"' + targetAttr + '>@$2</a>');
-            return replacedText;
-        };
-    }
+      var replacedText = $filter('linky')(text, target);
+      var targetAttr = "";
+      if (angular.isDefined(target)) {
+          targetAttr = ' target="' + target + '"';
+      }
+      // replace #hashtags and send them to twitter
+      var replacePattern1 = /(^|\s)#(\w*[a-zA-Z_]+\w*)/gim;
+      replacedText = text.replace(replacePattern1, '$1<a href="https://twitter.com/search?q=%23$2"' + targetAttr + '>#$2</a>');
+      // replace @mentions but keep them to our site
+      var replacePattern2 = /(^|\s)\@(\w*[a-zA-Z_]+\w*)/gim;
+      replacedText = replacedText.replace(replacePattern2, '$1<a href="https://twitter.com/$2"' + targetAttr + '>@$2</a>');
+      return replacedText;
+    };
+  }
 ])
 
 .filter('instagramLinky',['$filter',

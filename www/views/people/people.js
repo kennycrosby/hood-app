@@ -1,14 +1,18 @@
 'Use Strict';
-angular.module('App').controller('peopleController', function ($scope, $state, $cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils, People) {
+angular.module('App').controller('peopleController', function ($scope, $state, $ionicScrollDelegate, People) {
   
   if (window.StatusBar) {
     StatusBar.styleBlackTranslucent();
   }
 
-  var ref = new Firebase(FURL);
-  var peopleRef = ref.child('profile');
+  $scope.clearSearch = function() {
+    console.log('this is the search');
+    $scope.search = '';
+  };
 
-  console.log('people', People);
+  $scope.scrollTop = function() {
+    $ionicScrollDelegate.scrollTop();
+  };
 
   var dfdPeople = People.all();
 

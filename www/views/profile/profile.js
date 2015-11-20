@@ -8,6 +8,5 @@ angular.module('App').controller('profileController', function ($scope, $state, 
     $scope.person = value;
   });
 
-  
 }
 );

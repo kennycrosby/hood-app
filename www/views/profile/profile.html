@@ -1,32 +1,39 @@
 <ion-view view-title="Profile" hide-back-button="false" hide-nav-bar="false">
-  <ion-content class="padding">
 
-    <div class="list card padding">
+  <ion-content class="profile-page">
 
+    <div class="top">
+      <!-- <img ng-src="http://ddbcalifornia.com/ddbpeople/{{person.firstname | lowercase}}.{{person.lastname | lowercase}}.jpg"> -->
+      <img src="http://fillmurray.com/g/400/400">
       <h1>{{person.firstname}} {{person.lastname}}</h1>
       <h2>{{person.title}}</h2>
+    </div>
 
-      <a href="#" class="item item-icon-left">
+    <div class="list">
+
+      <a ng-href="mailto:{{person.email}}" class="item item-icon-left">
         <i class="icon ion-ios-email-outline"></i>
+        <h5><small>EMAIL</small></h5>
         {{person.email}}
       </a>
 
-      <a href="#" class="item item-icon-left">
+      <a ng-href="tel://{{person.phone | tel}}" class="item item-icon-left">
         <i class="icon ion-ios-telephone-outline"></i>
-        {{person.phone}}
+        <h5><small>PHONE</small></h5>
+        {{person.phone | tel}}
       </a>
 
-      <a href="#" class="item item-icon-left">
+      <a ng-href="http://twitter.com/{{person.twitter}}" class="item item-icon-left" ng-show="person.twitter">
         <i class="icon ion-social-twitter-outline"></i>
         Twitter
       </a>
 
-      <a href="#" class="item item-icon-left">
+      <a ng-href="http://instagram.com/{{person.instagram}}" class="item item-icon-left" ng-show="person.instagram">
         <i class="icon ion-social-instagram-outline"></i>
         Instagram
       </a>
 
-      <a href="#" class="item item-icon-left">
+      <a ng-href="http://facebook.com/{{person.facebook}}" class="item item-icon-left" ng-show="person.facebook">
         <i class="icon ion-social-facebook-outline"></i>
         Facebook
       </a>
