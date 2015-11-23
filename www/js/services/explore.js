@@ -9,12 +9,11 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
     init: function () {
       var self = this;
       // update size of image container
-      var totalHeight = $(window).height() - (  $('.bar-header').height() + $('.tabs-top').height() );
-      console.log('totalHeight', totalHeight);
-      var dynamicHeight = Math.floor(totalHeight / 3);
-      $('.explore-page').find('.item-image').css('height', dynamicHeight*2 + 'px');
-
-      //$('.bottom-content').css('height', dynamicHeight + 'px');
+      // var totalHeight = $('.scroll').height();
+      // console.log('totalHeight', totalHeight);
+      // var dynamicHeight = Math.floor(totalHeight / 2.5);
+      // $('.explore-page').find('.item-image').css('height', dynamicHeight + 'px');
+      // $('.bottom-content').css('min-height', dynamicHeight-7 + 'px');
     },
 
     allPlaces : {},

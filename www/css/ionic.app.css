@@ -9057,8 +9057,11 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
+.explore-page .scroll {
+  height: 100%; }
+
 .explore-page .item-image {
-  min-height: 215px;
+  height: 40%;
   border-bottom: none;
   background: #2F2D28; }
   .explore-page .item-image #map {
@@ -9077,7 +9080,10 @@ a.button {
   font-family: 'proxima_novabold'; }
 
 .place-content {
-  background: #fff; }
+  background: #fff;
+  padding-top: 10px; }
+  .place-content .row.title {
+    margin-top: 8px; }
   .place-content .row .col {
     text-align: right; }
   .place-content .row .col:first-child {
@@ -9086,18 +9092,20 @@ a.button {
     color: #2F2D28;
     font-family: 'proxima_novabold'; }
   .place-content h3 {
-    font-size: 0.8em;
+    font-size: 1em;
     margin-bottom: 0px;
     margin-top: 5px;
     opacity: .6; }
   .place-content h2 {
     font-size: 1.3em;
     font-weight: 500;
+    color: #000;
     opacity: .75;
     margin-bottom: 0px; }
-  .place-content p.open {
+  .place-content p {
     color: #848484;
-    opacity: .6; }
+    opacity: .6;
+    font-size: 1em; }
   .place-content .rating .stars {
     overflow: hidden; }
     .place-content .rating .stars span {
@@ -9113,10 +9121,12 @@ a.button {
   .place-content .rating small {
     clear: both;
     opacity: .45; }
-  .place-content .pricing {
-    opacity: .55; }
-    .place-content .pricing span {
-      margin-right: 4px; }
+  .place-content .pricing span {
+    margin-right: 4px;
+    opacity: 0.2; }
+    .place-content .pricing span.priced {
+      font-weight: 900;
+      opacity: 0.6; }
   .place-content .address {
     text-decoration: none;
     color: #848484;
@@ -9126,14 +9136,37 @@ a.button {
       color: #2F2D28; }
 
 .bottom-content {
-  position: absolute;
-  bottom: 0;
   width: 100%; }
+  .bottom-content .buttons {
+    position: absolute;
+    bottom: 0;
+    width: 100%; }
   .bottom-content .tabs {
     position: relative; }
+    .bottom-content .tabs a.tab-item {
+      max-width: 100%;
+      background: #F1F1F1; }
+      .bottom-content .tabs a.tab-item:first-child {
+        background: #F6F6F6; }
   .bottom-content button.button.button-block {
     margin: 0;
     color: #2F2D28; }
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .explore-page .item-image {
+    height: 50%; }
+  .place-content h2 {
+    font-size: 1.7em; }
+  .bottom-content .tabs {
+    height: 60px; }
+    .bottom-content .tabs a.tab-item {
+      height: 60px; }
+      .bottom-content .tabs a.tab-item .icon {
+        margin: 6px auto 0px;
+        height: 40px;
+        font-size: 40px; }
+  .bottom-content button.button.button-block {
+    height: 60px; } }
 
 .profile-page .top {
   background: #2F2D28;

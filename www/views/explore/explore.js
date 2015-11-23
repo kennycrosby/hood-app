@@ -41,10 +41,10 @@ angular.module('App').controller('exploreController', function ($scope, $firebas
   });
 
   var afterApply = function(data) {
-    $('.pricing').find('span').css('font-weight', '500')
+    $('.pricing').find('span').removeClass('priced')
       .each(function(key, val){
         if (key+1 <= data.price_level) {
-          $(val).css('font-weight', '900');
+          $(val).addClass('priced');
         }
       });
 

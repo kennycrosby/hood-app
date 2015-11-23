@@ -22,53 +22,61 @@
       <img ng-show="place.photos" ng-src="{{place.photos[0].myUrl}}" class="explore-img" imageonload="imageLoaded()">
     </div>
 
-  </ion-content>
-
-  <div class="bottom-content">
-
-    <div class="place-content">
-      <div class="row">
-        <div class="col col-50">
-          <p ng-hide="place.rating">Not yet rated</p>
-          <div ng-show="place.rating" class="rating" data-rating="{{place.rating}}">
-            <div class="stars"><span></span><span></span><span></span><span></span><span></span></div>
-            <small>Rating</small>
+    <div class="bottom-content">
+      <div class="place-content">
+        <div class="row">
+          <div class="col col-50">
+            <p ng-hide="place.rating">Not yet rated</p>
+            <div ng-show="place.rating" class="rating" data-rating="{{place.rating}}">
+              <div class="stars"><span></span><span></span><span></span><span></span><span></span></div>
+              <small>Rating</small>
+            </div>
+          </div>
+          <div class="col col-50">
+            <p ng-hide="place.price_level" class="pricing">No pricing</p>
+            <div ng-show="place.price_level" class="pricing" data-price="{{place.price_level}}">
+              <span>$</span><span>$</span><span>$</span><span>$</span>
+            </div>
           </div>
         </div>
-        <div class="col col-50">
-          <p ng-hide="place.price_level" class="pricing">No pricing</p>
-          <div ng-show="place.price_level" class="pricing" data-price="{{place.price_level}}">
-            <span>$</span><span>$</span><span>$</span><span>$</span>
+        <div class="row title">
+          <div class="col col-80">
+            <h2>{{place.name | cut:'6'}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-50">
+            <h3>{{place.types[0] | capitalize:true}}</h3>
+            <p class="open">{{place.opening_hours.open_now ? 'Open' : 'Closed' }} Now</p>
+          </div>
+          <div class="col col-50">
+            <a ng-href="https://www.google.com/maps/dir/Current+Location/{{place.address_components[0].long_name}}+{{place.address_components[1].long_name}}+{{place.address_components[2].short_name}}+{{place.address_components[3].short_name}}" target="_blank" class="address">
+              <h3>{{place.address_components[0].long_name}} {{place.address_components[1].long_name}}</h3>
+              <p>{{place.address_components[2].long_name}}, {{place.address_components[3].short_name}}</p>
+            </a>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col col-50">
-          <h2>{{place.name | cut:'4'}}</h2>
-          <h3>{{place.types[0] | capitalize:true}}</h3>
-          <p class="open">{{place.opening_hours.open_now ? 'Open' : 'Closed' }} Now</p>
-        </div>
-        <div class="col col-50">
-          <a ng-href="https://www.google.com/maps/dir/Current+Location/{{place.address_components[0].long_name}}+{{place.address_components[1].long_name}}+{{place.address_components[2].short_name}}+{{place.address_components[3].short_name}}" target="_blank" class="address">
-            <p><b>{{place.address_components[0].long_name}} {{place.address_components[1].long_name}}</b><br> 
-            {{place.address_components[2].long_name}}, {{place.address_components[3].short_name}}</p>
+
+      <div class="buttons">
+        <div class="tabs tabs-icon-only">
+          <a ng-href="{{place.url}}" class="tab-item">
+            <i class="icon ion-link"></i>
+          </a>
+          <a ng-href="tel://{{place.formatted_phone_number}}" class="tab-item">
+            <i class="icon ion-ios-telephone-outline"></i>
           </a>
         </div>
+        <button class="button button-block button-positive no-padding" ng-click="reload()">
+          <b>Nah</b>, whats next?
+        </button>
       </div>
+
     </div>
 
-    <div class="tabs tabs-icon-only">
-      <a ng-href="{{place.url}}" class="tab-item">
-        <i class="icon ion-link"></i>
-      </a>
-      <a ng-href="tel://{{place.formatted_phone_number}}" class="tab-item">
-        <i class="icon ion-ios-telephone-outline"></i>
-      </a>
-    </div>
-    <button class="button button-block button-positive no-padding" ng-click="reload()">
-      <b>Nah</b>, whats next?
-    </button>
-  </div>
+  </ion-content>
+
+  
 
 
 </ion-view>
