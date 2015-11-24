@@ -135,12 +135,16 @@
   }
 }
 
+
+
+
+// iPhone 6 in portrait
 @media only screen 
 and (min-device-width : 375px) 
 and (max-device-width : 667px) {
   .explore-page {
     .item-image {
-      height: 50%;
+      height: 42%;
     }
   }
   .place-content {
@@ -164,4 +168,18 @@ and (max-device-width : 667px) {
       height: 60px;
     }
   }
+}
+
+// iPhone 6 Plus in portrait
+@media only screen 
+and (min-device-width : 414px) 
+and (max-device-width : 736px) 
+and (orientation : portrait) {
+  .explore-page {
+    .item-image {
+      height: 50%;
+    }
+  }
+
+
 }

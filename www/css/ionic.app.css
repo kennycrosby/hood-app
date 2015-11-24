@@ -9154,7 +9154,7 @@ a.button {
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
   .explore-page .item-image {
-    height: 50%; }
+    height: 42%; }
   .place-content h2 {
     font-size: 1.7em; }
   .bottom-content .tabs {
@@ -9167,6 +9167,10 @@ a.button {
         font-size: 40px; }
   .bottom-content button.button.button-block {
     height: 60px; } }
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
+  .explore-page .item-image {
+    height: 50%; } }
 
 .profile-page .top {
   background: #2F2D28;
