@@ -1,14 +1,21 @@
-<ion-view view-title="" hide-back-button="true" hide-nav-bar="false">
-  <ion-nav-bar class="bar-light">
+<ion-view view-title="Home" hide-back-button="true" hide-nav-bar="false">
+<!--   <ion-nav-bar class="bar-light">
     <ion-nav-back-button></ion-nav-back-button>
-  </ion-nav-bar>
+  </ion-nav-bar> -->
+  <ion-nav-buttons side="left">
+    <button class="button" ng-click="logOut()">
+      <i class="icon ion-log-out"></i>
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button" ng-click="profile()">
+      <i class="icon ion-ios-person-outline"></i>
+    </button>
+  </ion-nav-buttons>
   <ion-content class="home-page" scroll="false">
-    <button ng-click="logOut()" class="button button-clear button-positive logout"><i class="icon ion-log-out"></i></button>
-    <button ng-click="profile()" class="button button-clear button-positive profile"><i class="icon ion-ios-person-outline"></i></button>
     <header>
       <img src="img/logo-home.svg">
     </header>
-
     <div class="navigation">
       <a href="#/explore" class="explore">
         <div class="overlay"></div>

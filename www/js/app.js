@@ -43,13 +43,15 @@ $stateProvider
       controller:'newsController'
     })
     ;
-$urlRouterProvider.otherwise("/login");
+    $urlRouterProvider.otherwise("/login");
 })
 // Changue this for your Firebase App URL.
 .constant('FURL', 'https://hoodapp.firebaseio.com/')
 .run(function($ionicPlatform) {
 
   $ionicPlatform.ready(function() {
+
+    console.log('running');
 
     if (window.StatusBar) {
       StatusBar.show();
