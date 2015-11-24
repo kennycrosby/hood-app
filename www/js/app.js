@@ -1,5 +1,5 @@
 'Use Strict';
-angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages', 'ion-affix'])
+angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages', 'ion-affix', 'ngIOS9UIWebViewPatch'])
 .config(function($stateProvider, $urlRouterProvider) {
 $stateProvider
     .state('login', {
@@ -43,7 +43,10 @@ $stateProvider
       controller:'newsController'
     })
     ;
-    $urlRouterProvider.otherwise("/login");
+    $urlRouterProvider.otherwise(function($injector, $location){
+      var $state = $injector.get("$state");
+      $state.go('login');
+    });
 })
 // Changue this for your Firebase App URL.
 .constant('FURL', 'https://hoodapp.firebaseio.com/')

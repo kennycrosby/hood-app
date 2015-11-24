@@ -74,26 +74,28 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
           $rootScope.$broadcast('place:updated', place);
         }
 
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
+        // if (status === google.maps.places.PlacesServiceStatus.OK) {
 
-          var marker = new google.maps.Marker({
-            map: map,
-            position: place.geometry.location
-          });
-          var latLng = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng() );
-          // map.setCenter(latLng);
+        //   var marker = new google.maps.Marker({
+        //     map: map,
+        //     position: place.geometry.location
+        //   });
+        //   var latLng = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng() );
+        //   // map.setCenter(latLng);
 
-          google.maps.event.addListener(marker, 'click', function() {
-            infowindow.setContent(place.name);
-            infowindow.open(map, this);
-          });
+        //   google.maps.event.addListener(marker, 'click', function() {
+        //     infowindow.setContent(place.name);
+        //     infowindow.open(map, this);
+        //   });
           
-          google.maps.event.addListenerOnce(map, 'idle', function() {
-            google.maps.event.trigger(map, 'resize');
-            map.setCenter(latLng);
-            map.setOptions({styles: styleArray});
-          });
-        }
+        //   google.maps.event.addListenerOnce(map, 'idle', function() {
+        //     google.maps.event.trigger(map, 'resize');
+        //     map.setCenter(latLng);
+        //     map.setOptions({styles: styleArray});
+        //   });
+        // }
+
+        
       });
 
     },

@@ -3,13 +3,13 @@
   <!-- <div class="tabs-striped tabs-top tabs-background-dark tabs-color-light"> -->
   <div class="tabs-striped tabs-top tabs-background-dark tabs-color-light tabs-text-only">
     <div class="tabs">
-      <a class="tab-item active" href="#" ng-click="filter('food')">
+      <a class="tab-item active" ng-click="filter('food')">
         FOOD <!-- <i class="icon ion-fork"></i> -->
       </a>
-      <a class="tab-item" href="#" ng-click="filter('drinks')">
+      <a class="tab-item" ng-click="filter('drinks')">
         DRINKS <!-- <i class="icon ion-beer"></i> -->
       </a>
-      <a class="tab-item" href="#" ng-click="filter('fun')">
+      <a class="tab-item" ng-click="filter('fun')">
         COFFEE <!-- <i class="icon ion-coffee"></i> -->
       </a>
     </div>
@@ -18,8 +18,9 @@
   <ion-content class="explore-page has-tabs-top" has-tabs="true">
   
     <div class="item item-image">
-      <div id="map" ng-class="{ 'hide': place.photos[0] }"></div>
-      <img ng-show="place.photos" ng-src="{{place.photos[0].myUrl}}" class="explore-img" imageonload="imageLoaded()">
+      <div id="map" ng-class="{ 'hide': place.photos[0] }" style="display:none;"></div>
+      <!-- <img ng-show="place.photos" ng-src="{{place.photos[0].myUrl}}" class="explore-img" imageonload="imageLoaded()"> -->
+      <img ng-show="place.photos" ng-src="{{place.photos[0].myUrl}}" class="explore-img">
     </div>
 
     <div class="bottom-content">
