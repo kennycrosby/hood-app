@@ -6,53 +6,23 @@
 
 <!--     <a href="" class="button button-block">Facebook Connect</a>
  -->
+
     <form name="registerForm" novalidate ng-submit="registerForm.$valid && register(user)"
     ng-class="{ 'has-error' : registerForm.txtemail.$invalid && registerForm.$submitted }">
+    <!-- <form name="registerForm" novalidate ng-submit="register(user)"> -->
     <div class="list">
       <label class="item item-input item-floating-label">
           <span class="input-label">DDB Email</span>
         <input name="txtemail" type="email" ng-model="user.email" placeholder="DDB Email"
         ng-minlength="5"
         ng-maxlength="60"
-        required>
+        >
       </label>
       <div class="form-errors" ng-messages="registerForm.txtemail.$error" ng-if="registerForm.$submitted">
         <div class="form-error" ng-message="required">You must enter something like name@email.com.</div>
         <div class="form-error" ng-message="email">This field is must be an email.</div>
         <div class="form-error" ng-message="maxlength">Oops, this address is too long.</div>
       </div>
-
-      <label class="item item-input item-floating-label">
-          <span class="input-label">First Name</span>
-        <input name="txtemail" type="text" ng-model="user.firstname" placeholder="First Name"
-        ng-minlength="5"
-        ng-maxlength="60"
-        required>
-      </label>
-
-      <label class="item item-input item-floating-label">
-          <span class="input-label">Last Name</span>
-        <input name="txtemail" type="text" ng-model="user.lastname" placeholder="Last Name"
-        ng-minlength="5"
-        ng-maxlength="60"
-        required>
-      </label>
-
-      <label class="item item-input item-floating-label">
-          <span class="input-label">Job Title</span>
-        <input name="txtemail" type="text" ng-model="user.title" placeholder="Job Title"
-        ng-minlength="5"
-        ng-maxlength="60"
-        required>
-      </label>
-
-      <label class="item item-input item-floating-label">
-          <span class="input-label">Phone Number</span>
-        <input name="txtemail" type="tel" ng-model="user.phone" placeholder="Phone Number"
-        ng-minlength="5"
-        ng-maxlength="60"
-        required>
-      </label>
 
       <label class="item item-input item-floating-label" ng-class="{ 'has-error-lr' : registerForm.txtpassword.$invalid  && registerForm.$submitted}">
         <span class="input-label">Password</span>
@@ -70,27 +40,56 @@
       </div>
 
       <label class="item item-input item-floating-label">
-          <span class="input-label">Twitter (optional)</span>
-        <input name="txtemail" type="text" ng-model="user.twitter" placeholder="Twitter (optional)"
+          <span class="input-label">First Name</span>
+        <input name="txtfirstname" type="text" ng-model="user.firstname" placeholder="First Name"
         ng-minlength="5"
         ng-maxlength="60"
         required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Last Name</span>
+        <input name="txtlastname" type="text" ng-model="user.lastname" placeholder="Last Name"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Job Title</span>
+        <input name="jobtitle" type="text" ng-model="user.title" placeholder="Job Title"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Phone Number</span>
+        <input name="phonenumber" type="tel" ng-model="user.phone" placeholder="Phone Number"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+
+      <label class="item item-input item-floating-label">
+          <span class="input-label">Twitter (optional)</span>
+        <input name="txttwitter" type="text" ng-model="user.twitter" placeholder="Twitter (optional)"
+        ng-minlength="5"
+        ng-maxlength="60">
       </label>
 
       <label class="item item-input item-floating-label">
           <span class="input-label">Facebook (optional)</span>
-        <input name="txtemail" type="text" ng-model="user.facebook" placeholder="Facebook (optional)"
+        <input name="txtfacebook" type="text" ng-model="user.facebook" placeholder="Facebook (optional)"
         ng-minlength="5"
-        ng-maxlength="60"
-        required>
+        ng-maxlength="60">
       </label>
 
       <label class="item item-input item-floating-label">
           <span class="input-label">Instagram (optional)</span>
-        <input name="txtemail" type="text" ng-model="user.facebook" placeholder="Instagram (optional)"
+        <input name="txtinstagram" type="text" ng-model="user.facebook" placeholder="Instagram (optional)"
         ng-minlength="5"
-        ng-maxlength="60"
-        required>
+        ng-maxlength="60">
       </label>
 
     </div>
@@ -104,7 +103,7 @@
   </div> -->
 
 
-  <form name="googleplaceForm" id="googleplaceForm" novalidate ng-submit="addGooglePlace(place)">
+  <!-- <form name="googleplaceForm" id="googleplaceForm" novalidate ng-submit="addGooglePlace(place)">
     <label class="item item-input item-floating-label">
       <span class="input-label">Place Name</span>
       <input name="txtemail" type="text" ng-model="place.name" placeholder="Name"
@@ -134,7 +133,7 @@
     <div class="padding-top">
       <input type="submit" value="Add Google Place" class="button button-block button-positive"/>
     </div>
-  </form>
+  </form> -->
 
   </ion-content>
 </ion-view>

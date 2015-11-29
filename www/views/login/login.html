@@ -1,5 +1,5 @@
 <ion-view view-title="Login" hide-back-button="true" hide-nav-bar="true">
-        <ion-content class="login-page" scroll="false">
+        <ion-content class="login-page">
           <!-- <div class="list text-center padding">
             <i class="icon ion-ios-game-controller-b larger positive"></i>
             <h1>HOOD</h1>
@@ -12,7 +12,7 @@
           <div class="list">
             <label class="item item-input item-floating-label" ng-class="{ 'has-error' : loginForm.txtemail.$invalid && loginForm.$submitted }">
               <span class="input-label">DDB Email</span>
-              <i class="icon ion-ios-person-outline placeholder-icon"></i>
+              <i class="icon icon-user placeholder-icon"></i>
               <input name="txtemail" type="email" ng-model="user.email" placeholder="DDB Email"
               ng-minlength="5"
               ng-maxlength="100"
@@ -27,7 +27,7 @@
             </div>
             <label class="item item-input item-floating-label" ng-class="{ 'has-error-lr' : loginForm.txtPassword.$invalid && loginForm.$submitted }">
               <span class="input-label">Password</span>
-              <i class="icon ion-ios-locked-outline placeholder-icon"></i>
+              <i class="icon icon-lock placeholder-icon"></i>
               <input name="txtPassword" type="password" ng-model="user.password" placeholder="Password"
               ng-minlength="4"
               ng-maxlength="80"

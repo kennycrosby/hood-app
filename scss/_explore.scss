@@ -4,7 +4,7 @@
   }
   .item-image {
     // min-height: 215px;
-    height: 40%;
+    height: 35%;
     border-bottom: none;
     background: $dark;
     #map {
@@ -17,8 +17,11 @@
       }
     }
     img {
-      width:100%;
-      height: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.5s ease;
     }
   }
 }
@@ -26,6 +29,7 @@
 .tabs-top {
   .tabs {
     .tab-item {
+      border: none;
       font-size: 0.9em;
       font-family: 'proxima_novabold';
     }
@@ -35,6 +39,12 @@
 .place-content {
   background: $light;
   padding-top: 10px;
+  i {
+    color: $energized;
+    float: right;
+    font-size: 32px;
+    margin: 5px 0 0 8px;
+  }
   .row {
     &.title {
       margin-top: 8px;
@@ -62,6 +72,13 @@
     color: #000;
     opacity: .75;
     margin-bottom: 0px;
+    
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;  
+    max-width: 100%;
+    position: relative;
   }
   p {
     color: #848484;
@@ -120,9 +137,15 @@
   width: 100%;
   .tabs {
     position: relative;
+    border: none;
+    padding-top: 0;
+    background-image: none;
     a.tab-item {
       max-width: 100%;
       background: #F1F1F1;
+      i {
+        color: $energized;
+      }
       &:first-child {
         background: #F6F6F6;  
       }
@@ -131,20 +154,16 @@
   button.button.button-block {
     margin: 0;
     color: $dark;
-    
   }
 }
-
-
-
 
 // iPhone 6 in portrait
 @media only screen 
 and (min-device-width : 375px) 
-and (max-device-width : 667px) {
+and (max-device-height : 667px) {
   .explore-page {
     .item-image {
-      height: 42%;
+      height: 45%;
     }
   }
   .place-content {
@@ -173,13 +192,56 @@ and (max-device-width : 667px) {
 // iPhone 6 Plus in portrait
 @media only screen 
 and (min-device-width : 414px) 
-and (max-device-width : 736px) 
+and (max-device-height : 736px) 
 and (orientation : portrait) {
   .explore-page {
     .item-image {
-      height: 50%;
+      height: 53%;
     }
   }
+  .place-content {
+    h2 {
+      font-size: 1.7em;
+    }
+  }
+  .bottom-content {
+    .tabs {
+      height: 60px;
+      a.tab-item {
+        height: 60px;
+        .icon {
+          margin: 6px auto 0px;
+          height: 40px;
+          font-size: 40px;
+        }
+      }
+    }
+    button.button.button-block {
+      height: 60px;
+    }
+  }
+}
 
+// iPhone 5 & 5S in portrait
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-height : 568px) 
+and (orientation : portrait) {
+  .explore-page {
+    .item-image {
+      height: 45%;
+    }
+  }
+}
 
+// iPhone 4
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-height : 480px)
+and (orientation : portrait) {
+  .explore-page {
+    .item-image {
+      height: 35%;
+    }
+  }
 }

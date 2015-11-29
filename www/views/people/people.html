@@ -6,30 +6,33 @@
       <i class="icon ion-search placeholder-icon"></i>
       <input type="search"
              placeholder="Search name or title..."
-             ng-model="search"
+             ng-model="query"
              ng-focus="searchFocused = true"
              ng-blur="searchFocused = false"
              ng-change="scrollTop()"
              class="full-width">
-      <button ng-if="search.length"
+      <button ng-if="query.length"
               class="button button-icon ion-ios-close input-button"
               ng-click="clearSearch()">
       </button>
     </div>
   </ion-header-bar>
 
-  <ion-content>
+  <ion-content class="people-page">
     <ion-list can-swipe="true">
-      <ion-item ng-repeat="person in people | filter:search" class="item-avatar" ng-href="#/profile/{{person.id}}">
-        <!-- <img ng-src="http://ddbcalifornia.com/ddbpeople/{{person.firstname | lowercase}}.{{person.lastname | lowercase}}.jpg"> -->
+      <ion-item ng-repeat="person in people | filter:query" class="item-avatar" ng-href="#/profile/{{person.id}}">
+        <!-- <img ng-src="http://ddbcalifornia.com/ddbpeople/{{person.firstname | lowercase}}.{{person.lastname | lowercase}}.jpg" onError="this.onerror=null;this.src='/img/secret.jpg';"> -->
         <img src="http://www.fillmurray.com/g/600/600">
-        <h2>{{person.firstname}} {{person.lastname}}</h2>
+        <h2>{{person.firstname + ' ' + person.lastname}}</h2>
         <p>{{person.title}}</p>
-        <ion-option-button class="button-positive" ng-href="tel://{{person.phone | tel}}">
-          Call
+        <ion-option-button class="button-positive callout" ng-href="mailto:{{person.email}}">
+          <i class="icon-mail"></i>
         </ion-option-button>
-        <ion-option-button class="button-info" ng-href="sms://{{person.phone | tel}}">
-          Text
+        <ion-option-button class="button-positive callout" ng-href="tel://{{person.phone | tel}}">
+          <i class="icon-call"></i>
+        </ion-option-button>
+        <ion-option-button class="button-positive callout" ng-href="sms://{{person.phone | tel}}">
+          <i class="icon-message"></i>
         </ion-option-button>
       </ion-item>
     </ion-list>

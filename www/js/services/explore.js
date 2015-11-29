@@ -114,7 +114,6 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
       } else {
         $img.css({'height' : 'auto','width' : '100%'});
       }
-
     }
   }
 

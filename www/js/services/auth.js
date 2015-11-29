@@ -14,7 +14,7 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
         lastname: user.lastname,
         title: user.title,
         phone: user.phone,
-        //gravatar: get_gravatar(user.email, 40),
+        gravatar: get_gravatar(user.email, 40),
 				registered_in: Date()
       };
 

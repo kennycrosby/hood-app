@@ -1,18 +1,18 @@
-<ion-view view-title="Home" hide-back-button="true" hide-nav-bar="false">
+<ion-view view-title="Home" hide-back-button="true" hide-nav-bar="false" class="home-page">
 <!--   <ion-nav-bar class="bar-light">
     <ion-nav-back-button></ion-nav-back-button>
   </ion-nav-bar> -->
   <ion-nav-buttons side="left">
     <button class="button" ng-click="logOut()">
-      <i class="icon ion-log-out"></i>
+      <i class="icon icon-logout"></i>
     </button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
-    <button class="button" ng-click="profile()">
-      <i class="icon ion-ios-person-outline"></i>
+    <button class="button" ui-sref="account({userId:currentUser.id})">
+      <i class="icon icon-profile"></i>
     </button>
   </ion-nav-buttons>
-  <ion-content class="home-page" scroll="false">
+  <ion-content  scroll="false">
     <header>
       <img src="img/logo-home.svg">
     </header>

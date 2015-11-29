@@ -17,6 +17,7 @@ angular.module('App').controller('exploreController', function ($scope, $firebas
 
   // if we already have the data
   if (Explore.allPlaces.length > 0){
+    console.log('we have the places already');
     filteredPlaces = Explore.allPlaces.filter(function( obj ) {
       return obj.type == placeType;
     });

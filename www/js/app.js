@@ -37,6 +37,11 @@ $stateProvider
       templateUrl: 'views/profile/profile.html',
       controller:'profileController'
     })
+    .state('account', {
+      url: '/account/:userId',
+      templateUrl: 'views/account/account.html',
+      controller:'accountController'
+    })
     .state('news', {
       url: '/news',
       templateUrl: 'views/news/news.html',
@@ -54,17 +59,17 @@ $stateProvider
 
   $ionicPlatform.ready(function() {
 
-    console.log('running');
-
     if (window.StatusBar) {
       StatusBar.show();
-      StatusBar.styleDefault();  
-    }
-    
+      StatusBar.styleBlackTranslucent();
+    } 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if(window.cordova && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    }
+    if (window.cordova) {
+      window.open = cordova.InAppBrowser.open;
     }
 
   });

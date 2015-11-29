@@ -1,0 +1,93 @@
+<ion-view view-title="Account" hide-back-button="false" hide-nav-bar="false">
+
+  <ion-content class="account-page">
+
+    <div class="top">
+      <img ng-src="http://ddbcalifornia.com/ddbpeople/{{person.firstname | lowercase}}.{{person.lastname | lowercase}}.jpg" onError="this.onerror=null;this.src='/img/secret.jpg';">
+      <h1>{{person.firstname}} {{person.lastname}}</h1>
+      <h2>{{person.title}}</h2>
+    </div>
+
+    <form name="accountForm" novalidate ng-submit="updateAccount(person)"
+          ng-class="{ 'has-error' : accountForm.txtemail.$invalid && accountForm.$submitted }">
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Phone Number</span>
+        <input name="phone" type="tel" 
+        ng-model="person.phone"
+        placeholder="{{ (person.phone ? person.phone : 'Phone') |tel}}"
+        ng-minlength="5"
+        ng-maxlength="60"
+        required>
+      </label>
+      <div class="form-errors" ng-messages="accountForm.phone.$error" ng-if="accountForm.$submitted">
+        <div class="form-error" ng-message="required">You must enter a phone number.</div>
+        <div class="form-error" ng-message="maxlength">Oops, this number is too long.</div>
+      </div>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Facebook</span>
+        <input name="txtfb" type="text" 
+        ng-model="person.facebook" 
+        placeholder="{{person.facebook ? person.facebook : 'Facebook Username'}}"
+        ng-minlength="5"
+        ng-maxlength="60">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Instagram</span>
+        <input name="txtin" type="text" ng-model="person.instagram" placeholder="{{person.instagram ? person.instagram : 'Instagram Handle'}}"
+        ng-minlength="5"
+        ng-maxlength="60">
+      </label>
+
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Twitter</span>
+        <input name="txttw" type="text" 
+        ng-model="person.twitter" 
+        placeholder="{{person.twitter ? person.twitter : 'Twitter Handle'}}"
+        ng-minlength="5"
+        ng-maxlength="60">
+      </label>
+
+      <div class="padding-top">
+        <input type="submit" value="Update Account" class="button button-block button-positive"/>
+      </div>
+
+    </form>
+
+    <div class="list">
+
+      <div class="item item-icon-left">
+        <i class="icon ion-ios-email-outline"></i>
+        <h5><small>EMAIL</small></h5>
+        {{person.email}}
+        <i class="icon-lock"></i>
+      </div>
+
+      <a ng-href="tel://{{person.phone | tel}}" class="item item-icon-left">
+        <i class="icon ion-ios-telephone-outline"></i>
+        <h5><small>PHONE</small></h5>
+        {{person.phone | tel}}
+      </a>
+
+      <a ng-href="http://twitter.com/{{person.twitter}}" class="item item-icon-left" ng-show="person.twitter">
+        <i class="icon ion-social-twitter-outline"></i>
+        Twitter
+      </a>
+
+      <a ng-href="http://instagram.com/{{person.instagram}}" class="item item-icon-left" ng-show="person.instagram">
+        <i class="icon ion-social-instagram-outline"></i>
+        Instagram
+      </a>
+
+      <a ng-href="http://facebook.com/{{person.facebook}}" class="item item-icon-left" ng-show="person.facebook">
+        <i class="icon ion-social-facebook-outline"></i>
+        Facebook
+      </a>
+
+    </div>
+    
+
+  </ion-content>
+</ion-view>

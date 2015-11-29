@@ -2,6 +2,7 @@
 angular.module('App').controller('registerController', function ($scope, $state,$cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils) {
 
   $scope.register = function(user) {
+    console.log('user', user);
     if(angular.isDefined(user)){
       Utils.show();
       Auth.register(user)
@@ -51,10 +52,7 @@ angular.module('App').controller('registerController', function ($scope, $state,
 
     document.getElementById('googleplaceForm').reset();
 
-    
   }
-
-  // $scope.googleplaceForm.$setPristine();
 
 }
 );

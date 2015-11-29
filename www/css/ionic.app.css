@@ -26,6 +26,73 @@ For example, you might change some of the default colors:
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+  font-family: 'icomoon';
+  src: url("../fonts/icomoon.eot?9y4s2p");
+  src: url("../fonts/icomoon.eot?9y4s2p#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?9y4s2p") format("truetype"), url("../fonts/icomoon.woff?9y4s2p") format("woff"), url("../fonts/icomoon.svg?9y4s2p#icomoon") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-logout:before {
+  content: "\e901"; }
+
+.icon-profile:before {
+  content: "\e906"; }
+
+.icon-lock:before {
+  content: "\e90e"; }
+
+.icon-user:before {
+  content: "\e90f"; }
+
+.icon-add:before {
+  content: "\e900"; }
+
+.icon-call:before {
+  content: "\e902"; }
+
+.icon-camera:before {
+  content: "\e903"; }
+
+.icon-edit:before {
+  content: "\e904"; }
+
+.icon-facebook:before {
+  content: "\e905"; }
+
+.icon-instagram:before {
+  content: "\e907"; }
+
+.icon-location:before {
+  content: "\e908"; }
+
+.icon-logo:before {
+  content: "\e909"; }
+
+.icon-mail:before {
+  content: "\e90a"; }
+
+.icon-message:before {
+  content: "\e90b"; }
+
+.icon-share:before {
+  content: "\e90c"; }
+
+.icon-twitter:before {
+  content: "\e90d"; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9061,7 +9128,7 @@ a.button {
   height: 100%; }
 
 .explore-page .item-image {
-  height: 40%;
+  height: 35%;
   border-bottom: none;
   background: #2F2D28; }
   .explore-page .item-image #map {
@@ -9072,16 +9139,25 @@ a.button {
     .explore-page .item-image #map.hide {
       opacity: 0; }
   .explore-page .item-image img {
-    width: 100%;
-    height: auto; }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.5s ease; }
 
 .tabs-top .tabs .tab-item {
+  border: none;
   font-size: 0.9em;
   font-family: 'proxima_novabold'; }
 
 .place-content {
   background: #fff;
   padding-top: 10px; }
+  .place-content i {
+    color: #ffc900;
+    float: right;
+    font-size: 32px;
+    margin: 5px 0 0 8px; }
   .place-content .row.title {
     margin-top: 8px; }
   .place-content .row .col {
@@ -9101,7 +9177,13 @@ a.button {
     font-weight: 500;
     color: #000;
     opacity: .75;
-    margin-bottom: 0px; }
+    margin-bottom: 0px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+    position: relative; }
   .place-content p {
     color: #848484;
     opacity: .6;
@@ -9142,19 +9224,24 @@ a.button {
     bottom: 0;
     width: 100%; }
   .bottom-content .tabs {
-    position: relative; }
+    position: relative;
+    border: none;
+    padding-top: 0;
+    background-image: none; }
     .bottom-content .tabs a.tab-item {
       max-width: 100%;
       background: #F1F1F1; }
+      .bottom-content .tabs a.tab-item i {
+        color: #ffc900; }
       .bottom-content .tabs a.tab-item:first-child {
         background: #F6F6F6; }
   .bottom-content button.button.button-block {
     margin: 0;
     color: #2F2D28; }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+@media only screen and (min-device-width: 375px) and (max-device-height: 667px) {
   .explore-page .item-image {
-    height: 42%; }
+    height: 45%; }
   .place-content h2 {
     font-size: 1.7em; }
   .bottom-content .tabs {
@@ -9168,26 +9255,52 @@ a.button {
   .bottom-content button.button.button-block {
     height: 60px; } }
 
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: portrait) {
+@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation: portrait) {
   .explore-page .item-image {
-    height: 50%; } }
+    height: 53%; }
+  .place-content h2 {
+    font-size: 1.7em; }
+  .bottom-content .tabs {
+    height: 60px; }
+    .bottom-content .tabs a.tab-item {
+      height: 60px; }
+      .bottom-content .tabs a.tab-item .icon {
+        margin: 6px auto 0px;
+        height: 40px;
+        font-size: 40px; }
+  .bottom-content button.button.button-block {
+    height: 60px; } }
 
+@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation: portrait) {
+  .explore-page .item-image {
+    height: 45%; } }
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 480px) and (orientation: portrait) {
+  .explore-page .item-image {
+    height: 35%; } }
+
+.account-page .top,
 .profile-page .top {
   background: #2F2D28;
   min-height: 250px;
   width: 100%;
   overflow: hidden;
   padding-bottom: 25px; }
+  .account-page .top h1,
+  .account-page .top h2,
   .profile-page .top h1,
   .profile-page .top h2 {
     color: #fff;
     text-align: center;
     font-family: 'proxima_novaregular'; }
+  .account-page .top h1,
   .profile-page .top h1 {
     font-size: 2em; }
+  .account-page .top h2,
   .profile-page .top h2 {
     font-size: 1.3em;
     opacity: .6; }
+  .account-page .top img,
   .profile-page .top img {
     width: 180px;
     height: 180px;
@@ -9195,14 +9308,18 @@ a.button {
     margin: 20px auto 10px;
     display: block; }
 
+.account-page .list,
 .profile-page .list {
   margin: 25px 10%;
   border: none; }
+  .account-page .list .item,
   .profile-page .list .item {
     border-left: none;
     border-right: none; }
+    .account-page .list .item h5,
     .profile-page .list .item h5 {
       opacity: .4; }
+    .account-page .list .item:first-child,
     .profile-page .list .item:first-child {
       border-top: none; }
 
@@ -9214,6 +9331,10 @@ a.button {
   border: 0; }
   .people-search .placeholder-icon {
     padding-top: 6px; }
+
+.people-page .callout i {
+  color: #fff;
+  font-size: 1.8em; }
 
 button.button.button-icon.input-button {
   position: absolute;
@@ -9351,6 +9472,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .bar.bar-dark {
   border-color: #2F2D28;
   background-image: linear-gradient(0deg, #2F2D28, #2F2D28 50%, transparent 50%); }
+  .bar.bar-dark button.button {
+    border-color: #2F2D28; }
 
 .bar.bar-light {
   border-color: #fff;
@@ -9358,6 +9481,8 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 
 .button.button-positive {
   color: #2F2D28; }
+  .button.button-positive:hover {
+    color: #2F2D28; }
 
 .title.title-center {
   font-family: 'proxima_novaregular';
@@ -9373,6 +9498,13 @@ ion-view.pane:before {
   right: 0;
   height: 44px;
   background-color: #fff; }
+
+.login-page .scroll {
+  height: 100%; }
+  .login-page .scroll form {
+    position: absolute;
+    width: 100%;
+    bottom: 0; }
 
 .forgot-page,
 .register-page,
@@ -9430,7 +9562,7 @@ ion-view.pane:before {
   .register-page .sub-login,
   .login-page .sub-login {
     color: #fff;
-    padding-top: 28px; }
+    padding: 28px 0 28px 0; }
     .forgot-page .sub-login a,
     .register-page .sub-login a,
     .login-page .sub-login a {
@@ -9449,11 +9581,10 @@ ion-view.pane:before {
     .forgot-page label .icon,
     .register-page label .icon,
     .login-page label .icon {
-      min-width: 14px;
       position: absolute;
-      left: -27px;
-      z-index: 999999;
-      font-size: 1.8em; }
+      left: -25px;
+      top: 40px;
+      z-index: 999999; }
     .forgot-page label .placeholder-icon,
     .register-page label .placeholder-icon,
     .login-page label .placeholder-icon {

@@ -1,3 +1,4 @@
+.account-page,
 .profile-page {
   .top {
     background: $dark;
@@ -53,6 +54,15 @@
   }
 }
 
+.people-page {
+  .callout {
+    i {
+      color: $light;
+      font-size: 1.8em;  
+    }
+  }
+}
+
 button.button.button-icon.input-button {
   position: absolute;
   top: 1px;
@@ -61,3 +71,4 @@ button.button.button-icon.input-button {
     font-size: 22px;
   }
 }
+
