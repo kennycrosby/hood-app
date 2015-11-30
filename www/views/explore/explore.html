@@ -17,11 +17,28 @@
 
   <ion-content class="explore-page has-tabs-top" has-tabs="true">
   
-    <div class="item item-image">
+    <!-- <div class="item item-image">
       <div id="map" ng-class="{ 'hide': place.photos[0] }" style="display:none;"></div>
       <img ng-hide="place.photos" ng-src="img/image-placeholder.jpg">
       <img ng-show="place.photos" ng-src="{{place.photos[0].myUrl}}" class="explore-img" imageonload="imageLoaded()">
+    </div> -->
+
+    <div id="map" ng-class="{ 'hide': place.photos[0] }" style="display:none;"></div>
+
+    <!-- show just one image -->
+    <div class="item item-image" ng-hide="place.photos.length > 0">
+      <img ng-src="img/image-placeholder.jpg">
     </div>
+
+    <div class="item item-image" ng-show="place.photos.length === 1">
+      <img ng-src="{{place.photos[0].myUrl}}" imageonload="imageLoaded()">
+    </div>
+
+    <ion-slide-box ng-show="place.photos.length > 1" on-slide-changed="slideHasChanged($index)" class="item-image">
+      <ion-slide ng-repeat="photo in place.photos">
+        <img ng-src="{{photo.myUrl}}" class="explore-img" imageonload="imageLoaded()">
+      </ion-slide>
+    </ion-slide-box>
 
     <div class="bottom-content">
       <div class="place-content">

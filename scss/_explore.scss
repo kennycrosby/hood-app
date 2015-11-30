@@ -2,6 +2,12 @@
   .scroll {
     height: 100%;
   }
+  img {
+    width: 100%;
+  }
+  .slider-slide {
+    overflow: hidden;
+  }
   .item-image {
     // min-height: 215px;
     height: 35%;

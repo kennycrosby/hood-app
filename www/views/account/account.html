@@ -13,6 +13,7 @@
 
       <label class="item item-input item-floating-label">
         <span class="input-label">Phone Number</span>
+        <i class="icon icon-call"></i>
         <input name="phone" type="tel" 
         ng-model="person.phone"
         placeholder="{{ (person.phone ? person.phone : 'Phone') |tel}}"
@@ -27,6 +28,7 @@
 
       <label class="item item-input item-floating-label">
         <span class="input-label">Facebook</span>
+        <i class="icon icon-facebook"></i>
         <input name="txtfb" type="text" 
         ng-model="person.facebook" 
         placeholder="{{person.facebook ? person.facebook : 'Facebook Username'}}"
@@ -36,6 +38,7 @@
 
       <label class="item item-input item-floating-label">
         <span class="input-label">Instagram</span>
+        <i class="icon icon-instagram"></i>
         <input name="txtin" type="text" ng-model="person.instagram" placeholder="{{person.instagram ? person.instagram : 'Instagram Handle'}}"
         ng-minlength="5"
         ng-maxlength="60">
@@ -43,6 +46,7 @@
 
       <label class="item item-input item-floating-label">
         <span class="input-label">Twitter</span>
+        <i class="icon icon-twitter"></i>
         <input name="txttw" type="text" 
         ng-model="person.twitter" 
         placeholder="{{person.twitter ? person.twitter : 'Twitter Handle'}}"
@@ -55,39 +59,6 @@
       </div>
 
     </form>
-
-    <div class="list">
-
-      <div class="item item-icon-left">
-        <i class="icon ion-ios-email-outline"></i>
-        <h5><small>EMAIL</small></h5>
-        {{person.email}}
-        <i class="icon-lock"></i>
-      </div>
-
-      <a ng-href="tel://{{person.phone | tel}}" class="item item-icon-left">
-        <i class="icon ion-ios-telephone-outline"></i>
-        <h5><small>PHONE</small></h5>
-        {{person.phone | tel}}
-      </a>
-
-      <a ng-href="http://twitter.com/{{person.twitter}}" class="item item-icon-left" ng-show="person.twitter">
-        <i class="icon ion-social-twitter-outline"></i>
-        Twitter
-      </a>
-
-      <a ng-href="http://instagram.com/{{person.instagram}}" class="item item-icon-left" ng-show="person.instagram">
-        <i class="icon ion-social-instagram-outline"></i>
-        Instagram
-      </a>
-
-      <a ng-href="http://facebook.com/{{person.facebook}}" class="item item-icon-left" ng-show="person.facebook">
-        <i class="icon ion-social-facebook-outline"></i>
-        Facebook
-      </a>
-
-    </div>
-    
 
   </ion-content>
 </ion-view>

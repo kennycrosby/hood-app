@@ -6,15 +6,15 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
 
   return {
 
-    init: function () {
-      var self = this;
-      // update size of image container
-      // var totalHeight = $('.scroll').height();
-      // console.log('totalHeight', totalHeight);
-      // var dynamicHeight = Math.floor(totalHeight / 2.5);
-      // $('.explore-page').find('.item-image').css('height', dynamicHeight + 'px');
-      // $('.bottom-content').css('min-height', dynamicHeight-7 + 'px');
-    },
+    // init: function () {
+    //   var self = this;
+    //   // update size of image container
+    //   // var totalHeight = $('.scroll').height();
+    //   // console.log('totalHeight', totalHeight);
+    //   // var dynamicHeight = Math.floor(totalHeight / 2.5);
+    //   // $('.explore-page').find('.item-image').css('height', dynamicHeight + 'px');
+    //   // $('.bottom-content').css('min-height', dynamicHeight-7 + 'px');
+    // },
 
     allPlaces : {},
 
@@ -33,8 +33,6 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
     getRandomPlace: function(type, places) {
 
       var self = this;
-      //var dfdRandomPlace = $.Deferred();
-
       var checkNum = setInterval(function(){
         var rNum = Math.floor((Math.random() * places.length) + 0);
         if (rNum != prevRandomNum) {
@@ -44,7 +42,6 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
         };
       }, 100);
 
-      //return dfdRandomPlace.promise();
     },
 
     getGooglePlaceData: function(placeID, callback) {
@@ -103,17 +100,31 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
     updateImages : function() {
 
       console.log('ITS LOADED');
-      var $img = $('.explore-img'),
-          $container = $('.explore-page').find('.item-image');
+      var $imgs = $('.explore-img'),
+          $container = $('.explore-page').find('.slider');
 
-      if ($('.explore-img').height() <= $('.explore-page').find('.item-image').height()) {
-        $img.css({'height' : '100%','width' : 'auto'});
-        if ($img.width() < $container.width()) {
-          $img.css({'height' : 'auto','width' : '100%'});
+      $imgs.each(function(index, image){
+        var $img = $(image);
+        if ($img.height() < $container.height()) {
+          console.log('in here, image is less than container');
+          $img.css({'height' : '100%','width' : 'auto'});
+          // if ($img.width() < $container.width()) {
+          //   $img.css({'height' : 'auto','width' : '100%'});
+          // };
+        } else {
+          console.log('in here, image is greater than than container');
+          $img.css({'height' : $container.height() + 'px','width' : 'auto'});
+          if ($img.width() < $container.width()) {
+            $img.css({'height' : 'auto','width' : '100%'});
+          }
+        }
+        console.log('index', index);
+        console.log('$imgs.length', $imgs.length);
+        if (index+1 === $imgs.length) {
+          $rootScope.$broadcast('images:updated');
         };
-      } else {
-        $img.css({'height' : 'auto','width' : '100%'});
-      }
+      });
+      
     }
   }
 
