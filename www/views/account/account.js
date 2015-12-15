@@ -1,11 +1,14 @@
 'Use Strict';
-angular.module('App').controller('accountController', function ($scope, $rootScope, $state, $stateParams, $cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils, People) {
+angular.module('App').controller('accountController', function ($scope, $ionicHistory, $rootScope, $state, $stateParams, $cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils, People) {
 
   var dfdPerson = People.get($stateParams.userId);
 
   var ref = new Firebase(FURL);
   var profilesRef = ref.child('profile');
-  var accountRef;
+
+  $ionicHistory.nextViewOptions({
+    disableBack: true
+  });
 
   $scope.updateAccount = function(person) {
     
@@ -21,19 +24,67 @@ angular.module('App').controller('accountController', function ($scope, $rootSco
         if (error) {
           console.log('Synchronization failed');
           Utils.errMessage(error);
+          Utils.hide();
         } else {
           console.log('Synchronization succeeded');
-          Utils.hide();
-          Utils.alertshow('Successfully','Account updated successfully.');
+          if (person.newpassword) {
+            changePassword();
+          } else {
+            Utils.hide();
+            Utils.alertshow('Success','Account updated successfully.');
+          }
         }
       };
 
-      accountRef.update({
-        'phone' : person.phone ? person.phone : '',
-        'facebook' : person.facebook ? person.facebook : '',
-        'instagram' : person.instagram ? person.instagram : '',
-        'twitter' : person.twitter ? person.twitter : ''
-      }, onComplete);
+      var changePassword = function() {
+        accountRef.changePassword({
+          email: person.email,
+          oldPassword: person.oldpassword,
+          newPassword: person.newpassword
+        }, function(error) {
+          if (error) {
+            switch (error.code) {
+              case "INVALID_PASSWORD":
+                console.log("The specified user account password is incorrect.");
+                Utils.alertshow('The specified user account password is incorrect.');
+                Utils.hide();
+                break;
+              case "INVALID_USER":
+                console.log("The specified user account does not exist.");
+                Utils.alertshow('The specified user account does not exist.');
+                Utils.hide();
+                break;
+              default:
+                console.log("Error changing password:", error);
+            }
+          } else {
+            console.log("User password changed successfully!");
+            Utils.hide();
+            Utils.alertshow('Successfully','Account updated and password changed successfully.');
+          }
+        });
+      }
+
+      ref.authWithPassword({
+        email    : person.email,
+        password : person.oldpassword
+      }, function(error, authData) {
+        if (error) {
+          console.log("Login Failed!", error);
+        } else {
+          console.log("Authenticated successfully with payload:", authData);
+          accountRef.update({
+            'phone' : person.phone ? person.phone : '',
+            'facebook' : person.facebook ? person.facebook : '',
+            'instagram' : person.instagram ? person.instagram : '',
+            'twitter' : person.twitter ? person.twitter : ''
+          }, onComplete);
+        }
+      });
+
+            
+
+      
 
     }
   };

@@ -12,7 +12,7 @@ $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #2F2D28 !default;
+$dark:                            #2F2F2E !default;
 $dark-text:                       #1F2326 !default;
 
 @import "fonts";
@@ -31,6 +31,10 @@ body {
   font-size: 14px;
 }
 
+a {
+  color: #ccc;
+}
+
 input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
   background: transparent !important;
 }
@@ -42,35 +46,37 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
     border-color: $dark;
   }
 }
-
 .bar.bar-light {
   border-color: $light;
   background-image: linear-gradient(0deg, $light, $light 50%, transparent 50%);
 }
-
 .button.button-positive {
   color: $dark;
   &:hover {
     color: $dark;
   }
 }
-
 .title.title-center {
   font-family: 'proxima_novaregular';
   font-weight: 500;
   font-size: 1.5em;
 }
 
-ion-view.pane:before {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 44px;
-  background-color: $light;
+// Back button
+.bar .button.button-icon:before {
+  font-size: 23px;
 }
+
+// ion-view.pane:before {
+//   content: " ";
+//   display: block;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   height: 44px;
+//   background-color: $light;
+// }
 
 // .loading-container {
 //   width: 100%;
@@ -82,16 +88,6 @@ ion-view.pane:before {
 //   // transition: all 1s ease;
 // }
 
-.login-page {
-  .scroll {
-    height: 100%;
-    form {
-      position: absolute;
-      width: 100%;
-      bottom: 0;
-    }
-  }
-}
 
 
 .forgot-page,
@@ -130,10 +126,12 @@ ion-view.pane:before {
     z-index: -1;
   }
   .logo {
-    padding: 20% 0 35% 0;
+    height: calc(100% - 340px);
+    position: relative;
     img {
-      margin: 0 auto;
-      display: block;
+      margin: auto;
+      position: absolute;
+      top: 0; bottom: 0; left: 0; right: 0;
     }
   }
   .sub-login {
@@ -201,5 +199,56 @@ ion-view.pane:before {
   .button.button-positive {
     min-height: 60px;
   }
+}
+
+.login-page {
+
+  form {
+    overflow: hidden;
+    height: 340px;
+  }
+
+  .scroll {
+    height: 100%;
+  }
+
+//   // iPhone 6 Plus in portrait
+//   @media only screen 
+//   and (min-device-width : 414px) 
+//   and (max-device-height : 736px) 
+//   and (orientation : portrait) {
+//     .logo {
+//       padding-bottom: 220px;
+//     }
+//   }
+
+//   // iPhone 6 in portrait
+//   @media only screen 
+//   and (min-device-width : 375px) 
+//   and (max-device-height : 667px) {
+//     .logo {
+//       padding-bottom: 160px;
+//     }
+//   }
+
+//   // iPhone 5 & 5S in portrait
+//   @media only screen 
+//   and (min-device-width : 320px) 
+//   and (max-device-height : 568px) 
+//   and (orientation : portrait) {
+//     .logo {
+//       padding-bottom: 80px;
+//     }
+//   }
+
+//   // iPhone 4
+//   @media only screen 
+//   and (min-device-width : 320px) 
+//   and (max-device-height : 480px)
+//   and (orientation : portrait) {
+//     .logo {
+//       padding-bottom: 50px;
+//     }
+//   }
 }
 

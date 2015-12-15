@@ -6,16 +6,6 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
 
   return {
 
-    // init: function () {
-    //   var self = this;
-    //   // update size of image container
-    //   // var totalHeight = $('.scroll').height();
-    //   // console.log('totalHeight', totalHeight);
-    //   // var dynamicHeight = Math.floor(totalHeight / 2.5);
-    //   // $('.explore-page').find('.item-image').css('height', dynamicHeight + 'px');
-    //   // $('.bottom-content').css('min-height', dynamicHeight-7 + 'px');
-    // },
-
     allPlaces : {},
 
     all: function () {
@@ -72,19 +62,16 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
         }
 
         // if (status === google.maps.places.PlacesServiceStatus.OK) {
-
         //   var marker = new google.maps.Marker({
         //     map: map,
         //     position: place.geometry.location
         //   });
         //   var latLng = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng() );
         //   // map.setCenter(latLng);
-
         //   google.maps.event.addListener(marker, 'click', function() {
         //     infowindow.setContent(place.name);
         //     infowindow.open(map, this);
         //   });
-          
         //   google.maps.event.addListenerOnce(map, 'idle', function() {
         //     google.maps.event.trigger(map, 'resize');
         //     map.setCenter(latLng);
@@ -97,30 +84,28 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
 
     },
 
-    updateImages : function() {
+    updateImages : function(imageCount) {
 
       console.log('ITS LOADED');
-      var $imgs = $('.explore-img'),
-          $container = $('.explore-page').find('.slider');
 
+      var $imgs = $('.explore-img');
+      var $container = $('.explore-page').find('.slider');
+      
       $imgs.each(function(index, image){
         var $img = $(image);
         if ($img.height() < $container.height()) {
-          console.log('in here, image is less than container');
           $img.css({'height' : '100%','width' : 'auto'});
-          // if ($img.width() < $container.width()) {
-          //   $img.css({'height' : 'auto','width' : '100%'});
-          // };
         } else {
-          console.log('in here, image is greater than than container');
           $img.css({'height' : $container.height() + 'px','width' : 'auto'});
           if ($img.width() < $container.width()) {
             $img.css({'height' : 'auto','width' : '100%'});
           }
         }
-        console.log('index', index);
-        console.log('$imgs.length', $imgs.length);
-        if (index+1 === $imgs.length) {
+
+        console.log('$imgs.length', imageCount);
+        if (index+1 === imageCount) {
+          console.log('images updated')
+          console.log('$imgs', $imgs);
           $rootScope.$broadcast('images:updated');
         };
       });

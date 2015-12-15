@@ -3,38 +3,39 @@
   <ion-content class="profile-page">
 
     <div class="top">
-      <img src="http://www.fillmurray.com/g/600/600">
-      <!-- <img ng-src="http://ddbcalifornia.com/ddbpeople/{{person.firstname | lowercase}}.{{person.lastname | lowercase}}.jpg" onError="this.onerror=null;this.src='/img/secret.jpg';"> -->
+      <!-- <img src="http://www.fillmurray.com/g/600/600"> -->
+      <img ng-if="person.avatar" ng-src="{{person.avatar}}" onError="this.onerror=null;this.src='/img/secret.jpg';">
+      <img ng-if="!person.avatar" ng-src="/img/secret.jpg">
       <h1>{{person.firstname}} {{person.lastname}}</h1>
       <h2>{{person.title}}</h2>
     </div>
 
     <div class="list">
 
-      <a ng-href="mailto:{{person.email}}" class="item item-icon-left">
-        <i class="icon ion-ios-email-outline"></i>
-        <h5><small>EMAIL</small></h5>
-        {{person.email}}
-      </a>
-
       <a ng-href="tel://{{person.phone | tel}}" class="item item-icon-left">
-        <i class="icon ion-ios-telephone-outline"></i>
-        <h5><small>PHONE</small></h5>
+        <i class="icon icon-call"></i>
+        <h5><small>Phone</small></h5>
         {{person.phone | tel}}
       </a>
 
-      <a ng-href="http://twitter.com/{{person.twitter}}" class="item item-icon-left" ng-show="person.twitter">
-        <i class="icon ion-social-twitter-outline"></i>
+      <a ng-href="mailto:{{person.email}}" class="item item-icon-left">
+        <i class="icon icon-mail"></i>
+        <h5><small>Email</small></h5>
+        {{person.email}}
+      </a>
+
+      <a ng-href="http://twitter.com/{{person.twitter}}" onClick="window.open(this.href,'_blank','location=yes');return false;" class="item item-icon-left" ng-show="person.twitter">
+        <i class="icon icon-twitter"></i>
         Twitter
       </a>
 
-      <a ng-href="http://instagram.com/{{person.instagram}}" class="item item-icon-left" ng-show="person.instagram">
-        <i class="icon ion-social-instagram-outline"></i>
+      <a ng-href="http://instagram.com/{{person.instagram}}" onClick="window.open(this.href,'_blank','location=yes');return false;" class="item item-icon-left" ng-show="person.instagram">
+        <i class="icon icon-instagram"></i>
         Instagram
       </a>
 
-      <a ng-href="http://facebook.com/{{person.facebook}}" class="item item-icon-left" ng-show="person.facebook">
-        <i class="icon ion-social-facebook-outline"></i>
+      <a ng-href="http://facebook.com/{{person.facebook}}" onClick="window.open(this.href,'_blank','location=yes');return false;" class="item item-icon-left" ng-show="person.facebook">
+        <i class="icon icon-facebook"></i>
         Facebook
       </a>
 

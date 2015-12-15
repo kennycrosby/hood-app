@@ -1,5 +1,6 @@
 <ion-view view-title="Latest News" hide-back-button="false" hide-nav-bar="false">
-  <ion-content class="news-page" scroll-event-interval="5">
+  <!-- <ion-content class="news-page" scroll-event-interval="5" overflow-scroll="true"> -->
+  <ion-content class="news-page" scroll-event-interval="25">
 
       <div class="scrollbox" scroll-to-bottom="scrollItems">
 
@@ -16,9 +17,9 @@
                       <img ng-src="{{item.extended_entities.media[0].media_url}}">
                     </div>
                     <div class="content">
-                      <p ng-bind-html="item.text | linky | tweetLinky"></p>
+                      <p ng-bind-html="item.text | linky:'_system' | tweetLinky:'_system' | hrefToJS"></p>
                       <footer>
-                        <i class="icon ion-social-twitter"></i> <a href="https://twitter.com/{{item.user.screen_name}}" rel="author">@{{item.user.screen_name}}</a>
+                        <i class="icon ion-social-twitter"></i> <a href="https://twitter.com/{{item.user.screen_name}}" onClick="window.open(this.href,'_blank','location=yes');return false;" rel="author">@{{item.user.screen_name}}</a>
                       </footer>  
                     </div>
                   </div>
@@ -28,9 +29,9 @@
                       <img ng-src="{{item.images.standard_resolution.url}}">
                     </div>
                     <div class="content">
-                      <p ng-bind-html="item.caption.text | instagramLinky"></p>
+                      <p ng-bind-html="item.caption.text | instagramLinky:'_blank' | hrefToJS"></p>
                       <footer>
-                        <i class="icon ion-social-instagram-outline"></i> <a href="https://www.instagram.com/{{item.user.username}}" rel="author">@{{item.user.username}}</a>
+                        <i class="icon ion-social-instagram-outline"></i> <a href="https://www.instagram.com/{{item.user.username}}" onClick="window.open(this.href,'_blank','location=yes');return false;" rel="author">@{{item.user.username}}</a>
                       </footer>  
 
                     </div>

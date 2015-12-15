@@ -14,7 +14,8 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
         lastname: user.lastname,
         title: user.title,
         phone: user.phone,
-        gravatar: get_gravatar(user.email, 40),
+        avatar: user.avatar ? user.avatar : '',
+        firstlogin: user.firstlogin ? user.firstlogin : true,
 				registered_in: Date()
       };
 
@@ -27,6 +28,7 @@ angular.module('App').factory('Auth', function(FURL, $firebaseAuth, $firebaseArr
     },
 
     login: function(user) {
+      console.log('in auth login');
       return auth.$authWithPassword(
         {email: user.email, password: user.password}
       );

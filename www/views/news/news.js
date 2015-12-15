@@ -24,5 +24,12 @@ angular.module('App').controller('newsController', function (News, $firebaseArra
     $scope.$broadcast('scroll.infiniteScrollComplete');
   };
 
+  $scope.openNew = function(e) {
+    e.preventDefault();
+    console.log(e.target);
+    window.open(e.target.href,"_blank","location=yes"); 
+
+  }
+
 }
 );

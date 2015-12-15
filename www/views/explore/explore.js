@@ -7,7 +7,7 @@ angular.module('App').controller('exploreController', function ($scope, $firebas
   }
 
   // Show the loader
-  Utils.show();
+  Utils.showReload();
 
   // Explore.init();
 
@@ -38,28 +38,43 @@ angular.module('App').controller('exploreController', function ($scope, $firebas
     // update the scope
     $scope.place = data;
     $scope.$apply(afterApply(data));
-    Utils.hide();
   });
 
   $scope.$on('images:updated', function(event, data) {
     $ionicSlideBoxDelegate.slide(0, 0);
-    $ionicSlideBoxDelegate.update();
+    setTimeout(function(){
+      $ionicSlideBoxDelegate.update();
+      // Utils.hide();
+      Utils.hideReload();
+    }, 500);
   });
 
   // Filter the places
   $scope.filter = function(type) {
-    Utils.show();
+    
     $(event.target).addClass('active').siblings().removeClass('active');
     filteredPlaces = Explore.allPlaces.filter(function( obj ) {
       return obj.type == type;
     });
-    Explore.getRandomPlace(type, filteredPlaces);
+
+    Utils.showReload(function(){
+      Explore.getRandomPlace(type, filteredPlaces);
+    });
+    
   }
 
   // Get a new place
   $scope.reload = function() {
-    Utils.show();
-    Explore.getRandomPlace(placeType, filteredPlaces);
+
+    Utils.showReload(function(){
+      Explore.getRandomPlace(placeType, filteredPlaces);
+    });
+    
+  }
+
+  $scope.socialShare = function(url) {
+    // console.log('fart', url);
+    window.plugins.socialsharing.share('Lets go!', null, null, url);
   }
 
   var afterApply = function(data) {
@@ -77,21 +92,22 @@ angular.module('App').controller('exploreController', function ($scope, $firebas
         }
       });
 
+    if (!$scope.place.photos) {
+      Utils.hide();
+      Utils.hideReload();
+    };
+
     var imageCount = 0;
     // ng-src image is loaded
     $scope.imageLoaded = function() {
-      
       imageCount++;
       console.log('image loaded', imageCount);
       console.log('$scope.place.photos.length', $scope.place.photos.length);
       if ($scope.place.photos.length === imageCount) {
         console.log('all loaded');
-        Explore.updateImages();
+        Explore.updateImages( $scope.place.photos.length );
       };
     }
-
-    // $ionicSlideBoxDelegate.update();
-
   }
 
 

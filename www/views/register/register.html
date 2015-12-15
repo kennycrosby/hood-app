@@ -56,6 +56,13 @@
       </label>
 
       <label class="item item-input item-floating-label">
+          <span class="input-label">Avatar Link</span>
+        <input name="txtavatar" type="text" ng-model="user.avatar" placeholder="Avatar"
+        ng-minlength="5"
+        ng-maxlength="60">
+      </label>
+
+      <label class="item item-input item-floating-label">
           <span class="input-label">Job Title</span>
         <input name="jobtitle" type="text" ng-model="user.title" placeholder="Job Title"
         ng-minlength="5"
@@ -98,12 +105,16 @@
     </div>
   </form>
 
-<!--   <div class="padding-top">
+  <div class="padding-top">
     <a href="" ng-click="registerAll()" class="button button-block button-positive">Register all people</a>
-  </div> -->
+  </div>
+
+    <div class="padding-top">
+    <a href="" ng-click="removeAll()" class="button button-block button-positive">REMOVE all people</a>
+  </div>
 
 
-  <!-- <form name="googleplaceForm" id="googleplaceForm" novalidate ng-submit="addGooglePlace(place)">
+  <form name="googleplaceForm" id="googleplaceForm" novalidate ng-submit="addGooglePlace(place)">
     <label class="item item-input item-floating-label">
       <span class="input-label">Place Name</span>
       <input name="txtemail" type="text" ng-model="place.name" placeholder="Name"
@@ -133,7 +144,7 @@
     <div class="padding-top">
       <input type="submit" value="Add Google Place" class="button button-block button-positive"/>
     </div>
-  </form> -->
+  </form>
 
   </ion-content>
 </ion-view>

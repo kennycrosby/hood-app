@@ -31,7 +31,7 @@
     </div>
 
     <div class="item item-image" ng-show="place.photos.length === 1">
-      <img ng-src="{{place.photos[0].myUrl}}" imageonload="imageLoaded()">
+      <img ng-src="{{place.photos[0].myUrl}}" imageonload="place.photos.length === 1 ? imageLoaded() : 'false' ">
     </div>
 
     <ion-slide-box ng-show="place.photos.length > 1" on-slide-changed="slideHasChanged($index)" class="item-image">
@@ -68,7 +68,7 @@
             <p class="open">{{place.opening_hours.open_now ? 'Open' : 'Closed' }} Now</p>
           </div>
           <div class="col col-70">
-            <a ng-href="http://maps.google.com/maps?saddr=600+california+st+san+francisco&daddr={{place.address_components[0].long_name}}+{{place.address_components[1].long_name}}+{{place.address_components[2].short_name}}+{{place.address_components[3].short_name}}&dirflg=w" onClick="window.open(this.href,'_blank','location=yes');return false;"class="address">
+            <a ng-href="http://maps.google.com/maps?saddr=600+california+st+san+francisco&daddr={{place.address_components[0].long_name}}+{{place.address_components[1].long_name}}+{{place.address_components[2].short_name}}+{{place.address_components[3].short_name}}&dirflg=w" onClick="window.open(this.href,'_blank','location=yes');return false;" class="address">
               <i class="icon-location"></i>
               <h3>{{place.address_components[0].long_name}} {{place.address_components[1].short_name}}</h3>
               <p>{{place.address_components[2].long_name}}, {{place.address_components[3].short_name}}</p>
@@ -79,18 +79,25 @@
 
       <div class="buttons">
         <div class="tabs tabs-icon-only">
-          <a ng-href="{{place.url}}" onClick="window.open(this.href,'_blank','location=yes');return false;" target="_system" class="tab-item">
+          <a ng-click="socialShare(place.url)" class="tab-item">
             <i class="icon icon-share"></i>
           </a>
           <a ng-href="tel://{{place.formatted_phone_number}}" class="tab-item">
             <i class="icon icon-call"></i>
           </a>
         </div>
-        <button class="button button-block button-positive no-padding" ng-click="reload()">
+        <button class="button button-block button-positive no-padding nextbtn" ng-click="reload()">
           <b>Nah</b>, whats next?
         </button>
       </div>
+    </div>
 
+    <div class="exLoader">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
     </div>
 
   </ion-content>

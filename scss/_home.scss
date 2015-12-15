@@ -1,36 +1,29 @@
+.bar .buttons-right .button .icon.icon-profile:before {
+  font-size: 24px;
+}
+
+$header-height: 128px;
 .home-page {
-  // .logout {
-  //   position: absolute;
-  //   top: 0;
-  //   right: 10px;
-  // }
-  // .profile {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 10px;
-  //   i:before {
-  //     font-size: 2.0em;
-  //     font-weight: 500;
-  //   }
-  // }
   .scroll {
     height: 100%;
   }
   header {
-    // height: 85px;
+    height: $header-height;
+    overflow: hidden;
+    position: relative;
     img {
-      margin: 20px auto;
-      display: block;
-    }  
+      margin: auto;
+      position: absolute;
+      top: 0; bottom: 0; left: 0; right: 0;
+    }
   }
   .navigation {
-    height: calc(100% - 82px);
-
+    height: calc(100% - #{$header-height});
     a {
       position: relative;
       z-index: 0;
       background: #444;
-      border-bottom: 1px solid rgba(255,255,255,0.25);
+      // border-bottom: 1px solid rgba(255,255,255,0.25);
       &.explore {
         &:before { 
           background-image: url(../img/nav-explore.png);
@@ -64,7 +57,7 @@
         -webkit-background-size: cover;
         background-size: cover;
       }
-      height: 33.33333%;
+      height: 33.34%;
       text-align: center;
       text-decoration: none;
       color: $light;
@@ -82,18 +75,75 @@
         margin: 0;
         color: white;
         vertical-align: middle;
-        // background-image: linear-gradient(-180deg, rgba(3,3,3,0.2) 3%, rgba(0,0,0,0.2) 100%);
         h2 {
-          font-size: 2.8em;
+          font-size: 2.9em;
+          line-height: 1.1em;
           font-weight: 500;
+          margin-bottom: 0px;
           color: $light;
           font-family: 'proxima_novabold';
         }
         h3 {
           font-size: 1.1em;
           font-weight: 500;
+          margin-top: 0px;
           color: $light;
           opacity: .75;
+        }
+      }
+    }
+  }
+  // iPhone 6 Plus in portrait
+  @media only screen 
+  and (min-device-width : 414px) 
+  and (max-device-height : 736px) 
+  and (orientation : portrait) {
+    .navigation {
+      a div {
+        h2 {
+          font-size: 2.9em;
+          line-height: 1.1em;
+        }
+      }
+    }
+  }
+
+  // iPhone 6 in portrait
+  @media only screen 
+  and (min-device-width : 375px) 
+  and (max-device-height : 667px) {
+    .navigation {
+      a div {
+        h2 {
+          font-size: 2.3em;
+        }
+      }
+    }
+  }
+
+  // iPhone 5 & 5S in portrait
+  @media only screen 
+  and (min-device-width : 320px) 
+  and (max-device-height : 568px) 
+  and (orientation : portrait) {
+    .navigation {
+      a div {
+        h2 {
+          font-size: 2.3em;
+        }
+      }
+    }
+  }
+
+  // iPhone 4
+  @media only screen 
+  and (min-device-width : 320px) 
+  and (max-device-height : 480px)
+  and (orientation : portrait) {
+    .navigation {
+      a div {
+        h2 {
+          font-size: 2.1em;
         }
       }
     }

@@ -1,22 +1,25 @@
 .account-page,
 .profile-page {
   .top {
-    background: $dark;
+    background: $energized;
     min-height: 250px;
     width: 100%;
     overflow: hidden;
+    padding-bottom: 8px;
     h1,
     h2 {
-      color: $light;
+      color: $dark;
       text-align: center;
       font-family: 'proxima_novaregular'
     }
     h1 {
       font-size: 2em;
+      margin-bottom: 0;
     }
     h2 {
       font-size: 1.3em;
-      opacity: .6;
+      opacity: 0.6;
+      margin-top: 0;
     }
     img {
       width: 180px;
@@ -25,32 +28,69 @@
       margin: 20px auto 10px;
       display: block;
     }
-    padding-bottom: 25px;
   }
   .list {
-    margin: 25px 10%;
+    margin: 8px 10%;
     border: none;
     .item {
       h5 {
-        opacity: .4;
+        opacity: 0.4;
       }
       border-left: none;
       border-right: none;
       &:first-child {
         border-top: none;
       }
+      .icon {
+        font-size: 1.2em;
+        opacity: 0.8;
+        &.icon-mail {
+          font-size: 1em;
+        }
+        &.icon-call {
+          font-size: 1.4em;
+        }
+      }
+    }
+  }
+}
+
+.account-page {
+  form {
+    margin-top: 18px;
+    input.button {
+      margin-top: 18px;
+      margin-bottom: 0;
+      border-radius: 0px;
     }
   }
 }
 
 .people-search {
-  height: 100%;
-  width: 100%;
-  margin: 0;
+  /* webkit solution */
+  ::-webkit-input-placeholder { text-align: center; }
+  /* mozilla solution */
+  input:-moz-placeholder { text-align:center; }
+  height: 25px;
+  width: 80%;
+  margin: 0 auto;
   padding: 0 0 0 20px;
   border: 0;
+  border-radius: 10px;
+  background-color: #4A4A4A;
   .placeholder-icon {
-    padding-top: 6px;
+    padding-top: 4px;
+  }
+  input {
+    color: #fff;
+    text-align: left;
+    padding-top: 3px;
+    height: 25px;
+    line-height: 25px;
+    ::-webkit-input-placeholder { text-align:center; }
+  }
+  input[type=text]:focus {
+    ::-webkit-input-placeholder { text-align: left; }
   }
 }
 
@@ -61,12 +101,34 @@
       font-size: 1.8em;  
     }
   }
+  .item-options {
+    border-bottom: 1px solid $energized;
+    .button {
+      min-width: 70px;
+    }
+    i {
+      color: $light;
+      font-size: 1.5em;
+      margin: 0 auto;
+      &.icon-mail {
+        font-size: 1.3em;
+      }
+      &.icon-call {
+        font-size: 1.7em;
+      }
+      &.icon-message {
+        font-size: 1.7em;
+      }
+    }
+  }
 }
 
 button.button.button-icon.input-button {
   position: absolute;
-  top: 1px;
+  top: -2px;
   right: 0px;
+  border: none;
+  opacity: 0.4;
   &:before {
     font-size: 22px;
   }

@@ -3,12 +3,13 @@
   <ion-content class="account-page">
 
     <div class="top">
-      <img ng-src="http://ddbcalifornia.com/ddbpeople/{{person.firstname | lowercase}}.{{person.lastname | lowercase}}.jpg" onError="this.onerror=null;this.src='/img/secret.jpg';">
+      <img ng-if="person.avatar" ng-src="{{person.avatar}}" onError="this.onerror=null;this.src='/img/secret.jpg';">
+      <img ng-if="!person.avatar" ng-src="/img/secret.jpg">
       <h1>{{person.firstname}} {{person.lastname}}</h1>
       <h2>{{person.title}}</h2>
     </div>
 
-    <form name="accountForm" novalidate ng-submit="updateAccount(person)"
+    <form name="accountForm" novalidate ng-submit="accountForm.$valid && updateAccount(person)"
           ng-class="{ 'has-error' : accountForm.txtemail.$invalid && accountForm.$submitted }">
 
       <label class="item item-input item-floating-label">
@@ -18,8 +19,7 @@
         ng-model="person.phone"
         placeholder="{{ (person.phone ? person.phone : 'Phone') |tel}}"
         ng-minlength="5"
-        ng-maxlength="60"
-        required>
+        ng-maxlength="60">
       </label>
       <div class="form-errors" ng-messages="accountForm.phone.$error" ng-if="accountForm.$submitted">
         <div class="form-error" ng-message="required">You must enter a phone number.</div>
@@ -53,6 +53,38 @@
         ng-minlength="5"
         ng-maxlength="60">
       </label>
+
+      <label class="item item-input item-floating-label" ng-class="{ 'has-error-lr' : registerForm.txtpassword.$invalid  && registerForm.$submitted}">
+        <span class="input-label">Old Password (required)</span>
+        <i class="icon icon-lock"></i>
+        <input name="txtoldpassword" type="password" ng-model="person.oldpassword" placeholder="Old Password (required)"
+        ng-minlength="4"
+        ng-maxlength="25"
+        required>
+      </label>
+      <div class="form-errors item" ng-messages="accountForm.txtoldpassword.$error" ng-if="accountForm.$submitted">
+        <div class="form-error" ng-message="required">You must enter your old password.</div>
+        <div class="form-error" ng-message="minlength">Password is too short.</div>
+        <div class="form-error" ng-message="maxlength">Password is too long</div>
+        <div class="form-error" ng-message="pattern">You must only enter characters, letters and numbers.</div>
+      </div>
+
+      <label class="item item-input item-floating-label" ng-class="{ 'has-error-lr' : accountForm.txtpassword.$invalid  && accountForm.$submitted}">
+        <span class="input-label">New Password</span>
+        <i class="icon icon-lock"></i>
+        <input name="txtnewpassword" type="password" ng-model="person.newpassword" placeholder="New Password"
+        ng-minlength="4"
+        ng-maxlength="25">
+      </label>
+
+      <div class="form-errors item" ng-messages="accountForm.txtnewpassword.$error" ng-if="accountForm.$submitted">
+        <div class="form-error" ng-message="minlength">Password is too short.</div>
+        <div class="form-error" ng-message="maxlength">Password is too long</div>
+        <div class="form-error" ng-message="pattern">You must only enter characters, letters and numbers.</div>
+      </div>
+
+
+
 
       <div class="padding-top">
         <input type="submit" value="Update Account" class="button button-block button-positive"/>

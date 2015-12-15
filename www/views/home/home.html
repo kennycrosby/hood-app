@@ -1,4 +1,4 @@
-<ion-view view-title="Home" hide-back-button="true" hide-nav-bar="false" class="home-page">
+<ion-view view-title="Home" can-swipe-back="false" hide-back-button="true" hide-nav-bar="false" class="home-page">
   <ion-nav-buttons side="left">
     <button class="button" ng-click="logOut()">
       <i class="icon icon-logout"></i>
@@ -25,10 +25,11 @@
         <div class="overlay"></div>
         <div>
           <h2>News</h2>
-          <h3>from DDB San Francisco</h3>
+          <h3>at DDB San Francisco</h3>
         </div>
       </a>
-      <a href="#/people" class="people">
+      <!-- <a href="#/people" class="people"> -->
+      <a ng-click="navigate('people')" class="people">
         <div class="overlay"></div>
         <div>
           <h2>People</h2>

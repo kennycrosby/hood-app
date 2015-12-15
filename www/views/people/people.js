@@ -43,6 +43,18 @@ angular.module('App').controller('peopleController', function ($scope, $state, $
     $ionicScrollDelegate.scrollTop();
   };
 
+  $scope.mail = function(email) {
+    window.open('mailto:'+email);
+  }
+
+  $scope.text = function(phone) {
+    window.open('tel://'+phone);
+  }
+
+  $scope.call = function(phone) {
+    window.open('sms://'+phone);
+  }
+
   
 
 }
