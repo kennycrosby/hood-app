@@ -1,12 +1,12 @@
 <ion-view view-title="Home" can-swipe-back="false" hide-back-button="true" hide-nav-bar="false" class="home-page">
   <ion-nav-buttons side="left">
-    <button class="button" ng-click="logOut()">
+    <button nav-direction="back" class="button" ng-click="logOut()">
       <i class="icon icon-logout"></i>
     </button>
   </ion-nav-buttons>
   <ion-nav-buttons side="right">
     <button class="button" ui-sref="account({userId:currentUser.id})">
-      <i class="icon icon-profile"></i>
+      <i class="icon-profile"></i>
     </button>
   </ion-nav-buttons>
   <ion-content  scroll="false">
@@ -14,14 +14,14 @@
       <img src="img/logo-home.svg">
     </header>
     <div class="navigation">
-      <a href="#/explore" class="explore">
+      <a ng-click="navigate('explore')" class="explore">
         <div class="overlay"></div>
         <div>
           <h2>Explore</h2>
           <h3>the neighborhood</h3>
         </div>
       </a>
-      <a href="#/news" class="news">
+      <a ng-click="navigate('news')" class="news">
         <div class="overlay"></div>
         <div>
           <h2>News</h2>

@@ -3,16 +3,16 @@
   <ion-content class="profile-page">
 
     <div class="top">
-      <!-- <img src="http://www.fillmurray.com/g/600/600"> -->
-      <img ng-if="person.avatar" ng-src="{{person.avatar}}" onError="this.onerror=null;this.src='/img/secret.jpg';">
-      <img ng-if="!person.avatar" ng-src="/img/secret.jpg">
+      <img ng-if="person.avatar && !person.dataImage" ng-src="{{person.avatar}}" onError="this.onerror=null;this.src='/img/secret.jpg';">
+      <img ng-if="person.dataImage" ng-src="data:image/jpeg;base64,{{person.dataImage}}" />
+      <img ng-if="!person.avatar && !person.dataImage" ng-src="/img/secret.jpg">
       <h1>{{person.firstname}} {{person.lastname}}</h1>
       <h2>{{person.title}}</h2>
     </div>
 
     <div class="list">
 
-      <a ng-href="tel://{{person.phone | tel}}" class="item item-icon-left">
+      <a ng-if="person.phone" ng-href="tel://{{person.phone | tel}}" class="item item-icon-left">
         <i class="icon icon-call"></i>
         <h5><small>Phone</small></h5>
         {{person.phone | tel}}

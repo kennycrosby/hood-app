@@ -1,14 +1,39 @@
 'Use Strict';
-angular.module('App').controller('accountController', function ($scope, $ionicHistory, $rootScope, $state, $stateParams, $cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils, People) {
+angular.module('App').controller('accountController', function ($scope, $ionicHistory, $cordovaCamera, $rootScope, $state, $stateParams, $cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils, People) {
 
   var dfdPerson = People.get($stateParams.userId);
 
   var ref = new Firebase(FURL);
   var profilesRef = ref.child('profile');
+  
+  $scope.imageData = '';
 
   $ionicHistory.nextViewOptions({
     disableBack: true
   });
+
+  $scope.upload = function() {
+    
+    var options = {
+      quality : 75,
+      destinationType : Camera.DestinationType.DATA_URL,
+      sourceType : Camera.PictureSourceType.CAMERA,
+      allowEdit : true,
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    };
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+        console.log('imageData', imageData);
+        $scope.person.dataImage = imageData;
+        $scope.imageData = imageData;
+    }, function(error) {
+        console.error(error);
+    });
+    
+  }
 
   $scope.updateAccount = function(person) {
     
@@ -77,7 +102,8 @@ angular.module('App').controller('accountController', function ($scope, $ionicHi
             'phone' : person.phone ? person.phone : '',
             'facebook' : person.facebook ? person.facebook : '',
             'instagram' : person.instagram ? person.instagram : '',
-            'twitter' : person.twitter ? person.twitter : ''
+            'twitter' : person.twitter ? person.twitter : '',
+            'dataImage' : $scope.imageData ? $scope.imageData : ''
           }, onComplete);
         }
       });

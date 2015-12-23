@@ -1,5 +1,5 @@
 'Use Strict';
-angular.module('App').controller('homeController', function ($scope, $state, Auth, $location, FURL, $firebaseAuth, $firebaseObject, $rootScope, $ionicPopup, Utils) {
+angular.module('App').controller('homeController', function ($scope, $state, $ionicHistory, Auth, $location, FURL, $firebaseAuth, $firebaseObject, $rootScope, $ionicPopup, Utils) {
 
   var ref = new Firebase(FURL);
   var profilesRef = ref.child('profile');
@@ -62,7 +62,12 @@ angular.module('App').controller('homeController', function ($scope, $state, Aut
 
   $scope.logOut = function () {
     Auth.logout();
-    $location.path('/login');
+
+    $ionicHistory.nextViewOptions({
+      disableAnimate: true,
+      // disableBack: false
+    });
+    $state.go('login');
   }
 
   $scope.navigate = function(page) {

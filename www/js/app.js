@@ -25,6 +25,8 @@ angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages',
 
   $ionicPlatform.ready(function() {
 
+    
+
     if (window.StatusBar) {
       StatusBar.show();
       StatusBar.styleBlackTranslucent();
@@ -42,7 +44,10 @@ angular.module('App', ['ionic','ngStorage', 'ngCordova','firebase','ngMessages',
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
+
+$ionicConfigProvider.views.forwardCache(true);
+
 $stateProvider
     .state('home', {
       url: '/home',

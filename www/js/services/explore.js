@@ -1,4 +1,4 @@
-angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebaseObject, $rootScope, Utils) {
+angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebaseObject, $rootScope, Utils, $localStorage) {
 
   var ref = new Firebase(FURL),
       placesRef = ref.child('places'),
@@ -14,6 +14,7 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
 
       $firebaseArray( placesRef ).$loaded().then(function(places){
         self.allPlaces = places;
+        $localStorage.allPlaces = places;
         dfdPlaces.resolve(places);
       });
 
@@ -35,7 +36,6 @@ angular.module('App').factory('Explore', function(FURL, $firebaseArray, $firebas
     },
 
     getGooglePlaceData: function(placeID, callback) {
-
 
       var map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: -33.866, lng: 151.196},

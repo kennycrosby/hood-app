@@ -12,6 +12,7 @@
     font-size: 14px;
     font-weight: 500;
     font-size: .8em;
+    border-bottom: 0px;
     span {
       opacity: .75;
     }
@@ -24,6 +25,8 @@
     }
   }
   .list {
+    padding-bottom: 0;
+    padding-top: 0;
     div:nth-child(even) {
       div.twitter {
         background: #F1F1F1;
@@ -38,7 +41,8 @@
   }
   .instagram {
     .content {
-      margin: 35px 25px;
+      margin: 35px 25px 0;
+      padding-bottom: 35px;
     }
   }
   .content {

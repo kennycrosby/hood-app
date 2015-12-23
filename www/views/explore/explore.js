@@ -1,24 +1,21 @@
 'Use Strict';
-angular.module('App').controller('exploreController', function ($scope, $firebaseArray, $state, $ionicSlideBoxDelegate, $cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils, Explore) {
+angular.module('App').controller('exploreController', function ($scope, $rootScope, $firebaseArray, $state, $ionicSlideBoxDelegate, $cordovaOauth, $localStorage, $location,$http,$ionicPopup, $firebaseObject, Auth, FURL, Utils, Explore) {
+
+  Utils.show();
 
   // update status bar
   if (window.StatusBar) {
     StatusBar.styleBlackTranslucent();
   }
 
-  // Show the loader
-  Utils.showReload();
-
-  // Explore.init();
-
   var placeType = 'food',
       placesPromise = Explore.all(),
       filteredPlaces = {};
 
   // if we already have the data
-  if (Explore.allPlaces.length > 0){
+  if ($localStorage.allPlaces){
     console.log('we have the places already');
-    filteredPlaces = Explore.allPlaces.filter(function( obj ) {
+    filteredPlaces = $localStorage.allPlaces.filter(function( obj ) {
       return obj.type == placeType;
     });
     // get the data
@@ -26,12 +23,16 @@ angular.module('App').controller('exploreController', function ($scope, $firebas
   } else {
     // filter the data by the type
     // grab a random google place ID
-    placesPromise.then(function(places){
-      filteredPlaces = places.filter(function( obj ) {
-        return obj.type == placeType;
+    var removeStartDataFetch = $scope.$on('$locationChangeSuccess', function(evt) {
+      placesPromise.then(function(places){
+        filteredPlaces = places.filter(function( obj ) {
+          return obj.type == placeType;
+        });
+        Explore.getRandomPlace(placeType, filteredPlaces);
       });
-      Explore.getRandomPlace(placeType, filteredPlaces);
     });
+
+    $scope.$on('$destroy', removeStartDataFetch);
   }
 
   $scope.$on('place:updated', function(event, data) {
@@ -44,7 +45,7 @@ angular.module('App').controller('exploreController', function ($scope, $firebas
     $ionicSlideBoxDelegate.slide(0, 0);
     setTimeout(function(){
       $ionicSlideBoxDelegate.update();
-      // Utils.hide();
+      Utils.hide();
       Utils.hideReload();
     }, 500);
   });
@@ -53,7 +54,7 @@ angular.module('App').controller('exploreController', function ($scope, $firebas
   $scope.filter = function(type) {
     
     $(event.target).addClass('active').siblings().removeClass('active');
-    filteredPlaces = Explore.allPlaces.filter(function( obj ) {
+    filteredPlaces = $localStorage.allPlaces.filter(function( obj ) {
       return obj.type == type;
     });
 
@@ -110,18 +111,16 @@ angular.module('App').controller('exploreController', function ($scope, $firebas
     }
   }
 
-
-
 })
 
 .directive('imageonload', function() {
   return {
     restrict: 'A',
     link: function(scope, element, attrs) {
-        element.bind('load', function() {
-            //call the function that was passed
-            scope.$apply(attrs.imageonload);
-        });
+      element.bind('load', function() {
+          //call the function that was passed
+          scope.$apply(attrs.imageonload);
+      });
     }
   };
 });

@@ -9,7 +9,7 @@ angular.module('App').factory('Utils', function($ionicLoading,$ionicPopup) {
   	    maxWidth: 200,
   	    showDelay: 0,
         duration: 10000,
-        template: '<p class="item-icon-left">Loading...<ion-spinner icon="lines"/></p>'
+        template: '<div class="spinner"</div>'
       });
     },
 

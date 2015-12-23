@@ -21,8 +21,9 @@
   <ion-content class="people-page">
     <ion-list can-swipe="true">
       <ion-item collection-repeat="person in people | filter:query" class="item-avatar" ng-href="#/profile/{{person.id}}">
-        <img ng-if="person.avatar" ng-src="{{person.avatar}}" onError="this.onerror=null;this.src='/img/secret.jpg';">
-        <img ng-if="!person.avatar" ng-src="/img/secret.jpg">
+        <img ng-if="person.avatar && !person.dataImage" ng-src="{{person.avatar}}" onError="this.onerror=null;this.src='/img/secret.jpg';">
+        <img ng-if="person.dataImage" ng-src="data:image/jpeg;base64,{{person.dataImage}}" />
+        <img ng-if="!person.avatar && !person.dataImage" ng-src="img/secret.jpg">
         <!-- <img ng-src="http://ddbcalifornia.com/ddbpeople/{{person.firstname | lowercase}}.{{person.lastname | lowercase}}.jpg" onError="this.onerror=null;this.src='/img/secret.jpg';"> -->
         <!-- <img src="http://www.fillmurray.com/g/600/600"> -->
         <h2>{{person.firstname + ' ' + person.lastname}}</h2>
